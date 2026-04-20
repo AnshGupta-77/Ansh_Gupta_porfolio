@@ -5,6 +5,9 @@
 jQuery(function($) {
     'use strict';
     
+    // Initialize custom cursor (desktop only)
+    initCustomCursor();
+    
     // Scroll reveal animations for elements
     scrollRevealAnimations();
     
@@ -14,6 +17,62 @@ jQuery(function($) {
     // Navbar transparency on scroll
     navbarEnhancements();
 });
+
+// Custom Cursor Implementation
+var initCustomCursor = function() {
+    // Only on desktop devices
+    if (window.matchMedia('(pointer: coarse)').matches || $(window).width() <= 768) {
+        return;
+    }
+    
+    // Create cursor elements
+    var $cursor = $('<div class="custom-cursor"></div>');
+    var $cursorDot = $('<div class="custom-cursor-dot"></div>');
+    
+    $('body').append($cursor).append($cursorDot);
+    
+    var cursorX = 0, cursorY = 0;
+    var dotX = 0, dotY = 0;
+    var mouseX = 0, mouseY = 0;
+    
+    // Track mouse movement
+    $(document).on('mousemove', function(e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+    
+    // Smooth cursor animation
+    function animateCursor() {
+        // Lagging cursor (outer circle)
+        cursorX += (mouseX - cursorX) * 0.15;
+        cursorY += (mouseY - cursorY) * 0.15;
+        $cursor.css({
+            left: cursorX,
+            top: cursorY
+        });
+        
+        // Following cursor (inner dot)
+        dotX += (mouseX - dotX) * 0.35;
+        dotY += (mouseY - dotY) * 0.35;
+        $cursorDot.css({
+            left: dotX,
+            top: dotY
+        });
+        
+        requestAnimationFrame(animateCursor);
+    }
+    
+    animateCursor();
+    
+    // Hover effects
+    var $hoverElements = $('a, button, .btn, .nav-link, .project-card, .service-card, .tech-item, .contact-btn, .footer-social a, input, textarea, select');
+    
+    $hoverElements.on('mouseenter', function() {
+        $cursor.addClass('hover');
+    }).on('mouseleave', function() {
+        $cursor.removeClass('hover');
+    });
+};
 
 // Scroll reveal animations
 var scrollRevealAnimations = function() {
