@@ -1,0 +1,96 @@
+PORTFOLIO ASSETS GUIDE
+======================
+
+REQUIRED IMAGES FOR VERCEL DEPLOYMENT
+-------------------------------------
+
+1. PROFILE PHOTO (Hero Section)
+   Location: assets/images/profile.jpeg (or profile.jpg)
+   
+   Specs:
+   - Format: JPG or JPEG
+   - Size: 400x400px minimum (square)
+   - Style: Professional headshot or blazer photo
+   - Will display as: 200px circle (150px on mobile)
+   
+   Current Status: ✅ FOUND - profile.jpeg exists (121KB)
+
+2. HERO BACKGROUND
+   Location: assets/images/background/hero-bg.jpeg
+   
+   Specs:
+   - Format: JPG/JPEG (compressed)
+   - Size: 1920x1080px or larger
+   - Style: Abstract gradient, professional photo, or tech-themed
+   - Will have: Dark gradient overlay for text readability
+   
+   Current Status: ✅ FOUND - hero-bg.jpeg exists (333KB)
+
+3. LOGO (Navbar)
+   Location: assets/images/logo/logo.png
+   
+   Specs:
+   - Format: PNG with transparent background
+   - Size: ~200x60px (maintain aspect ratio)
+   - Height in navbar: 45px (38px on mobile)
+   - Style: "Ansh Forge" or "AF" branding
+   
+   Fallback: Text "AF." displays if image missing
+   Current Status: ⚠️ MISSING - Add logo.png here (fallback text will show)
+
+4. RESUME PDF
+   Location: assets/resume/Ansh_Gupta_Resume.pdf
+   
+   Specs:
+   - Format: PDF only
+   - Size: Under 2MB
+   - Content: Updated resume with latest projects
+   
+   Current Status: ✅ FOUND - Ansh_Gupta_Resume.pdf exists (36KB)
+
+OPTIONAL IMAGES
+---------------
+
+5. PROJECT SCREENSHOTS
+   Location: assets/images/projects/
+   - bike-tribe.jpg
+   - liver-disease.jpg
+   
+   Current Status: Using template fallbacks
+
+FILE PATH RULES (CRITICAL)
+---------------------------
+
+CORRECT (Relative Paths):
+   assets/images/profile.jpg
+   assets/images/background/hero-bg.jpg
+   assets/images/logo/logo.png
+   assets/resume/Ansh_Gupta_Resume.pdf
+
+INCORRECT (Will break on Vercel):
+   /assets/images/profile.jpg
+   ./assets/images/profile.jpg
+
+BRANDING IMPLEMENTED
+--------------------
+
+Navbar/Footer: "Ansh Forge"
+Hero Tagline: "Stack by Ansh"
+Personal Name: "Ansh Gupta"
+
+PROJECT GITHUB LINKS
+--------------------
+
+Bike-Tribe: https://github.com/AnshGupta-77/Bike-Tribe
+Liver Disease: https://github.com/AnshGupta-77/Liver_disease_prediction_model
+
+QUICK CHECKLIST FOR DEPLOYMENT
+------------------------------
+
+[ ] Add assets/images/profile.jpg
+[ ] Add assets/images/background/hero-bg.jpg
+[ ] Add assets/images/logo/logo.png
+[ ] Add assets/resume/Ansh_Gupta_Resume.pdf
+[ ] Test all buttons work
+[ ] Test responsive layout
+[ ] Verify GitHub links open correctly
