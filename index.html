@@ -87,6 +87,9 @@
       <!-- END nav -->
 
       <div class="cover-v1 jarallax" id="home-section">
+        <!-- Background Image Layer -->
+        <div class="hero-bg-image"></div>
+        
         <div class="container">
           <div class="row align-items-center">
               
@@ -98,9 +101,16 @@
               
               <!-- Text Content - z-index 2 with animation -->
               <div class="hero-text-content">
+                <!-- Status Badge -->
+                <div class="status-badge gsap-reveal-hero">
+                  <span class="status-dot"></span>
+                  Available for Work
+                </div>
+                
                 <h1 class="heading gsap-reveal-hero">Ansh Gupta</h1>
                 <h2 class="subheading gsap-reveal-hero">Full-Stack Developer (React + FastAPI)</h2>
                 <p class="hero-tagline gsap-reveal-hero">Stack by Ansh</p>
+                <p class="hero-mission gsap-reveal-hero">Building fast, scalable apps for real-world problems.</p>
                 <p class="hero-bio gsap-reveal-hero">Full-Stack Developer specializing in React and FastAPI, focused on building scalable backend systems and real-time web applications. Currently developing Bike-Tribe, a community platform for riders, and working with early-stage clients to turn ideas into production-ready solutions.</p>
                 <div class="hero-cta-buttons gsap-reveal-hero">
                   <a href="#portfolio-section" class="btn btn-outline-pill btn-custom-light">View Work</a>
@@ -143,88 +153,75 @@
           <div class="row">
             <!-- PROJECT 1: Bike-Tribe -->
             <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="0">
-              <div class="project-card">
+              <div class="project-card project-card-hover">
                 <div class="project-image-wrapper">
                   <img src="assets/images/projects/bike-tribe.jpg" alt="Bike-Tribe Platform" class="lazyload img-fluid" onerror="this.src='images/work_1_md.jpg'">
                   <span class="project-badge">Launching Soon</span>
                 </div>
                 <div class="project-content">
-                  <h3>Bike-Tribe — Real-Time Riders Platform</h3>
-                  <p class="project-description">A full-stack platform for bike riders to create, join, and manage rides with real-time interaction.</p>
-                  
-                  <ul class="project-features">
-                    <li>JWT authentication</li>
-                    <li>Create & join rides</li>
-                    <li>Ride code system</li>
-                    <li>Real-time updates using WebSockets</li>
-                    <li>Scalable backend architecture</li>
-                  </ul>
-
-                  <div class="architecture-block">
-                    <div class="architecture-title">Architecture</div>
-                    <div class="architecture-flow">
-                      <span class="arch-item">React</span>
-                      <span class="arch-arrow">→</span>
-                      <span class="arch-item">FastAPI</span>
-                      <span class="arch-arrow">→</span>
-                      <span class="arch-item">PostgreSQL</span>
-                      <span class="arch-arrow">→</span>
-                      <span class="arch-item">WebSockets</span>
-                    </div>
+                  <h3>Bike-Tribe</h3>
+                  <p class="project-description">Real-time riders platform for creating and joining bike rides</p>
+                  <div class="tech-stack">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">FastAPI</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">WebSockets</span>
                   </div>
-
-                  <div class="challenge-solution">
-                    <div class="cs-box challenge">
-                      <div class="cs-label">Challenge</div>
-                      <p class="cs-text">Real-time synchronization, Database design for ride-user relations</p>
+                </div>
+                <!-- Hover Overlay - Mini Case Study -->
+                <div class="project-overlay">
+                  <div class="project-overlay-content">
+                    <h4>Bike-Tribe Platform</h4>
+                    <p class="problem"><strong>Problem:</strong> Riders need a way to coordinate group rides with real-time updates and manage ride memberships efficiently.</p>
+                    <p class="solution"><strong>Solution:</strong> Built a full-stack platform with WebSocket-based real-time updates, JWT authentication, and a ride code system for seamless coordination.</p>
+                    <div class="tech-mini">
+                      <span>React</span>
+                      <span>FastAPI</span>
+                      <span>PostgreSQL</span>
+                      <span>WebSockets</span>
+                      <span>JWT Auth</span>
                     </div>
-                    <div class="cs-box solution">
-                      <div class="cs-label">Solution</div>
-                      <p class="cs-text">WebSocket-based updates, Normalized relational schema</p>
-                    </div>
+                    <a href="https://github.com/AnshGupta-77/Bike-Tribe" target="_blank" class="view-project">
+                      View Project →
+                    </a>
                   </div>
-
-                  <a href="https://github.com/AnshGupta-77/Bike-Tribe" target="_blank" class="project-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                    </svg>
-                    View GitHub
-                  </a>
                 </div>
               </div>
             </div>
 
             <!-- PROJECT 2: Liver Disease Prediction -->
             <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-              <div class="project-card">
+              <div class="project-card project-card-hover">
                 <div class="project-image-wrapper">
                   <img src="assets/images/projects/liver-disease.jpg" alt="Liver Disease Prediction System" class="lazyload img-fluid" onerror="this.src='images/work_2_md.jpg'">
                 </div>
                 <div class="project-content">
-                  <h3>Liver Disease Prediction System</h3>
-                  <p class="project-description">Machine learning system to predict liver disease using clinical data.</p>
-                  
-                  <ul class="project-features">
-                    <li>Data preprocessing</li>
-                    <li>Model training</li>
-                    <li>Performance evaluation</li>
-                    <li>Data visualization</li>
-                  </ul>
-
+                  <h3>Liver Disease Predictor</h3>
+                  <p class="project-description">ML-powered system for early liver disease detection</p>
                   <div class="tech-stack">
                     <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Pandas</span>
-                    <span class="tech-tag">NumPy</span>
                     <span class="tech-tag">Scikit-learn</span>
+                    <span class="tech-tag">Pandas</span>
                     <span class="tech-tag">Matplotlib</span>
                   </div>
-
-                  <a href="https://github.com/AnshGupta-77/Liver_disease_prediction_model" target="_blank" class="project-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                    </svg>
-                    View GitHub
-                  </a>
+                </div>
+                <!-- Hover Overlay - Mini Case Study -->
+                <div class="project-overlay">
+                  <div class="project-overlay-content">
+                    <h4>Liver Disease Prediction</h4>
+                    <p class="problem"><strong>Problem:</strong> Early detection of liver disease requires analyzing complex clinical data patterns that are difficult to identify manually.</p>
+                    <p class="solution"><strong>Solution:</strong> Developed an ML pipeline with data preprocessing, model training, and performance evaluation to predict liver disease with high accuracy.</p>
+                    <div class="tech-mini">
+                      <span>Python</span>
+                      <span>Pandas</span>
+                      <span>NumPy</span>
+                      <span>Scikit-learn</span>
+                      <span>Matplotlib</span>
+                    </div>
+                    <a href="https://github.com/AnshGupta-77/Liver_disease_prediction_model" target="_blank" class="view-project">
+                      View Project →
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -398,9 +395,10 @@
           <div class="row">
             <div class="col-md-8 mx-auto text-center">
               <p class="contact-cta-text gsap-reveal">Have a project in mind? Let's build it together.</p>
+              <p class="contact-response-time gsap-reveal">Usually responds within a few hours</p>
               
               <div class="contact-buttons-grid gsap-reveal">
-                <a href="https://wa.me/916268579208" target="_blank" class="contact-btn whatsapp">
+                <a href="https://wa.me/919981104977?text=Hi%20Ansh%2C%20I%20saw%20your%20portfolio%20and%20want%20to%20discuss%20a%20project" target="_blank" class="contact-btn whatsapp">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
                   </svg>
@@ -456,7 +454,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="https://wa.me/916268579208" target="_blank" aria-label="WhatsApp">
+                  <a href="https://wa.me/919981104977?text=Hi%20Ansh%2C%20I%20saw%20your%20portfolio%20and%20want%20to%20discuss%20a%20project" target="_blank" aria-label="WhatsApp">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
                       <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592z"/>
                     </svg>
