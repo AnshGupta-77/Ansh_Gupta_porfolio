@@ -99,7 +99,7 @@ QUICK CHECKLIST FOR DEPLOYMENT
 CURRENT STATUS SUMMARY
 ----------------------
 
-Profile:  ✅ FOUND (profile.jpeg - 121KB)
+Profile:  ✅ FOUND (profile.jpg - 182KB)
 Hero BG:  ✅ FOUND (hero-bg.jpeg - 333KB)
 Logo:     ⚠️  MISSING (logo.png - shows "SA." fallback)
 Resume:   ✅ FOUND (Ansh_Gupta_Resume.pdf - 36KB)

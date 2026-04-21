@@ -1206,6 +1206,144 @@ html {
   padding: 5rem 0;
 }
 
+/* -----------------------------------------------------
+   SYSTEM THINKING SECTION
+   ----------------------------------------------------- */
+.system-flow-wrapper {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  position: relative;
+}
+
+.system-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.system-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  min-width: 100px;
+  transition: all 0.3s ease;
+}
+
+.system-node:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(214, 52, 71, 0.3);
+  transform: translateY(-3px);
+}
+
+.node-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.node-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 0.25rem;
+}
+
+.node-tech {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(214, 52, 71, 0.2);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.flow-arrow {
+  font-size: 1.5rem;
+  color: #D63447;
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+.system-description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 600px;
+  margin: 1.5rem auto 0;
+}
+
+@media (max-width: 768px) {
+  .system-flow {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .flow-arrow {
+    transform: rotate(90deg);
+  }
+  
+  .system-flow-wrapper {
+    padding: 2rem 1rem;
+  }
+}
+
+/* -----------------------------------------------------
+   TRUST SIGNALS SECTION
+   ----------------------------------------------------- */
+.trust-section {
+  padding: 2rem 0;
+}
+
+.trust-signals {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  padding: 1.5rem 2rem;
+  background: rgba(0, 255, 150, 0.03);
+  border: 1px solid rgba(0, 255, 150, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.trust-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.trust-item p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .trust-signals {
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.5rem;
+  }
+  
+  .trust-item {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* Custom cursor enhancement */
 @media (pointer: fine) {
   .service-card,
