@@ -1366,10 +1366,13 @@ html {
   margin-bottom: 1rem;
 }
 
-/* Projects Grid */
+/* Projects Grid - Consistent Layout */
 .projects-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  padding: 80px 40px;
+  perspective: 1200px;
 }
 
 /* 3D Floating Card Container */
@@ -1377,13 +1380,37 @@ html {
   position: relative;
   background: transparent;
   perspective: 1000px;
-  min-height: 480px;
+  min-height: 520px;
   cursor: pointer;
+  transform: translateY(0);
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+/* Glow Effect */
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  background: radial-gradient(circle at center, rgba(0, 255, 150, 0.1), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.project-card:hover::after {
+  opacity: 1;
 }
 
 /* Floating Animation */
 .floating-card {
-  animation: float 6s ease-in-out infinite;
+  animation: float 6s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
 }
 
 @keyframes float {
@@ -1429,21 +1456,58 @@ html {
   box-shadow: 0 0 15px rgba(66, 133, 244, 0.2);
 }
 
+/* Neon Pill Status Tags */
+.status-tag {
+  font-size: 11px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.status-tag.brewing {
+  background: rgba(255, 152, 0, 0.1);
+  color: rgba(255, 152, 0, 1);
+  border: 1px solid rgba(255, 152, 0, 0.4);
+  box-shadow: 0 0 15px rgba(255, 152, 0, 0.2);
+}
+
+.status-tag.ready {
+  background: rgba(0, 255, 150, 0.1);
+  color: rgba(0, 255, 150, 1);
+  border: 1px solid rgba(0, 255, 150, 0.4);
+  box-shadow: 0 0 15px rgba(0, 255, 150, 0.2);
+}
+
+.status-tag.learning {
+  background: rgba(66, 133, 244, 0.1);
+  color: rgba(66, 133, 244, 1);
+  border: 1px solid rgba(66, 133, 244, 0.4);
+  box-shadow: 0 0 15px rgba(66, 133, 244, 0.2);
+}
+
 /* 3D Flip Card Inner */
 .flip-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 480px;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 520px;
+  transition: transform 0.8s ease;
   transform-style: preserve-3d;
 }
 
 .project-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) rotateX(3deg) rotateY(-3deg);
 }
 
-/* Front and Back Faces */
+/* Front and Back Faces - Glass Effect */
 .flip-card-front,
 .flip-card-back {
   position: absolute;
@@ -1452,7 +1516,7 @@ html {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   border-radius: 24px;
-  padding: 1.5rem;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.03);
@@ -1461,8 +1525,9 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 
     0 25px 50px rgba(0, 0, 0, 0.3),
-    0 0 100px rgba(0, 0, 0, 0.1);
+    0 0 40px rgba(0, 255, 150, 0.08);
   overflow: hidden;
+  will-change: transform;
 }
 
 /* Front Face Shine Effect */
@@ -1479,7 +1544,7 @@ html {
     rgba(255, 255, 255, 0.05),
     transparent
   );
-  transition: left 0.6s ease;
+  transition: left 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
   pointer-events: none;
   border-radius: 24px;
 }
@@ -1495,60 +1560,41 @@ html {
   border: 1px solid rgba(214, 52, 71, 0.3);
 }
 
-/* Image Carousel */
-.project-carousel {
+/* Image Container - Lightweight Rotator */
+.project-image-container {
   position: relative;
   width: 100%;
-  height: 200px;
-  border-radius: 16px;
+  height: 280px;
+  border-radius: 12px;
   overflow: hidden;
   margin-bottom: 1.5rem;
   background: rgba(0, 0, 0, 0.2);
+  will-change: transform;
 }
 
-.carousel-images {
-  position: relative;
-  width: 100%;
-  height: 100%;
+.project-image-container.static {
+  cursor: default;
 }
 
-.carousel-images img {
+.project-image {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 12px;
   opacity: 0;
-  transition: opacity 0.8s ease;
+  transition: opacity 0.4s ease-in-out, transform 0.6s ease;
+  will-change: opacity, transform;
 }
 
-.carousel-images img.active {
+.project-image.active {
   opacity: 1;
 }
 
-.carousel-indicators {
-  position: absolute;
-  bottom: 0.75rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 0.5rem;
-  z-index: 10;
-}
-
-.carousel-indicators span {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.carousel-indicators span.active {
-  background: #D63447;
-  transform: scale(1.2);
+.project-card:hover .project-image {
+  transform: scale(1.05);
 }
 
 /* Front Content */
@@ -1581,7 +1627,7 @@ html {
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .project-card:hover .project-tags .tech-tag {
@@ -1600,7 +1646,7 @@ html {
   color: rgba(255, 255, 255, 0.5);
   padding-top: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .project-card:hover .flip-hint {
@@ -1612,7 +1658,7 @@ html {
   width: 16px;
   height: 16px;
   opacity: 0.6;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .project-card:hover .flip-hint svg {
@@ -1702,7 +1748,7 @@ html {
   border-radius: 12px;
   font-size: 0.9rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   width: 100%;
   text-decoration: none;
 }
@@ -1727,12 +1773,18 @@ html {
 
 /* Mobile Adjustments */
 @media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 40px 20px;
+  }
+  
   .project-card {
-    min-height: 420px;
+    min-height: 460px;
   }
   
   .flip-card-inner {
-    min-height: 420px;
+    min-height: 460px;
   }
   
   .flip-card-front,
@@ -1740,8 +1792,8 @@ html {
     padding: 1.25rem;
   }
   
-  .project-carousel {
-    height: 160px;
+  .project-image-container {
+    height: 220px;
   }
   
   .project-name {
@@ -1770,9 +1822,19 @@ html {
     padding: 0.3rem 0.6rem;
   }
   
+  .status-tag {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+  
   /* Disable floating animation on mobile */
   .floating-card {
     animation: none;
+  }
+  
+  /* Simplify 3D on mobile */
+  .project-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
   }
 }
 
@@ -1790,7 +1852,7 @@ html {
     animation: none;
   }
   
-  .carousel-images img {
+  .project-image {
     transition: none;
   }
 }

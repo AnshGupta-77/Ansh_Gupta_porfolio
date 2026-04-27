@@ -153,61 +153,55 @@ window.addEventListener('load', function() {
    BUILT & BREWING - CAROUSEL & 3D EFFECTS
    ----------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', function() {
-    initProjectCarousels();
+    initProjectRotators();
     initProjectCardTilt();
 });
 
-// Auto-rotating Image Carousels
-var initProjectCarousels = function() {
-    document.querySelectorAll('.project-carousel').forEach(function(carousel) {
-        var images = carousel.querySelectorAll('.carousel-images img');
-        var indicators = carousel.querySelectorAll('.carousel-indicators span');
-        var current = 0;
-        var intervalId = null;
+// Lightweight Image Rotator for Project Cards
+function initImageRotator(containerSelector, images, interval) {
+    interval = interval || 2500;
+    var container = document.querySelector(containerSelector);
+    if (!container) return;
+    
+    var img = container.querySelector('img');
+    if (!img || images.length <= 1) return;
+    
+    var index = 0;
+    
+    setInterval(function() {
+        index = (index + 1) % images.length;
         
-        function showImage(index) {
-            images.forEach(function(img, i) {
-                img.classList.toggle('active', i === index);
-            });
-            indicators.forEach(function(ind, i) {
-                ind.classList.toggle('active', i === index);
-            });
-            current = index;
-        }
+        // Fade out
+        img.style.opacity = 0;
         
-        function nextImage() {
-            showImage((current + 1) % images.length);
-        }
-        
-        // Start auto-rotation (every 3 seconds)
-        function startRotation() {
-            if (!intervalId) {
-                intervalId = setInterval(nextImage, 3000);
-            }
-        }
-        
-        // Stop auto-rotation
-        function stopRotation() {
-            if (intervalId) {
-                clearInterval(intervalId);
-                intervalId = null;
-            }
-        }
-        
-        // Start rotation initially
-        startRotation();
-        
-        // Pause rotation on hover
-        carousel.addEventListener('mouseenter', stopRotation);
-        carousel.addEventListener('mouseleave', startRotation);
-        
-        // Click indicators
-        indicators.forEach(function(ind, i) {
-            ind.addEventListener('click', function() {
-                showImage(i);
-            });
-        });
-    });
+        setTimeout(function() {
+            img.src = images[index];
+            // Fade in
+            img.style.opacity = 1;
+        }, 300);
+    }, interval);
+}
+
+// Initialize all project image rotators
+var initProjectRotators = function() {
+    // Bike Tribe - 4 images (img1.jpg - img4.jpg)
+    initImageRotator('[data-project="biketribe"]', [
+        'assets/images/projects/bike-tribe/img1.jpg',
+        'assets/images/projects/bike-tribe/img2.jpg',
+        'assets/images/projects/bike-tribe/img3.jpg',
+        'assets/images/projects/bike-tribe/img4.jpg'
+    ], 2500);
+    
+    // FreelanceFlow - 4 images (img1.jpg - img4.jpg)
+    initImageRotator('[data-project="freelanceflow"]', [
+        'assets/images/projects/freelanceflow/img1.jpg',
+        'assets/images/projects/freelanceflow/img2.jpg',
+        'assets/images/projects/freelanceflow/img3.jpg',
+        'assets/images/projects/freelanceflow/img4.jpg'
+    ], 2500);
+    
+    // Liver Disease - NO ROTATION (static img1.jpg)
+    // No initialization needed
 };
 
 // 3D Tilt Effect for Project Cards
