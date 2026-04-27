@@ -148,3 +148,114 @@ window.addEventListener('load', function() {
     // Add loaded class to body for CSS transitions
     document.body.classList.add('page-loaded');
 });
+
+/* -----------------------------------------------------
+   BUILT & BREWING - CAROUSEL & 3D EFFECTS
+   ----------------------------------------------------- */
+document.addEventListener('DOMContentLoaded', function() {
+    initProjectCarousels();
+    initProjectCardTilt();
+});
+
+// Auto-rotating Image Carousels
+var initProjectCarousels = function() {
+    document.querySelectorAll('.project-carousel').forEach(function(carousel) {
+        var images = carousel.querySelectorAll('.carousel-images img');
+        var indicators = carousel.querySelectorAll('.carousel-indicators span');
+        var current = 0;
+        var intervalId = null;
+        
+        function showImage(index) {
+            images.forEach(function(img, i) {
+                img.classList.toggle('active', i === index);
+            });
+            indicators.forEach(function(ind, i) {
+                ind.classList.toggle('active', i === index);
+            });
+            current = index;
+        }
+        
+        function nextImage() {
+            showImage((current + 1) % images.length);
+        }
+        
+        // Start auto-rotation (every 3 seconds)
+        function startRotation() {
+            if (!intervalId) {
+                intervalId = setInterval(nextImage, 3000);
+            }
+        }
+        
+        // Stop auto-rotation
+        function stopRotation() {
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        }
+        
+        // Start rotation initially
+        startRotation();
+        
+        // Pause rotation on hover
+        carousel.addEventListener('mouseenter', stopRotation);
+        carousel.addEventListener('mouseleave', startRotation);
+        
+        // Click indicators
+        indicators.forEach(function(ind, i) {
+            ind.addEventListener('click', function() {
+                showImage(i);
+            });
+        });
+    });
+};
+
+// 3D Tilt Effect for Project Cards
+var initProjectCardTilt = function() {
+    // Only on desktop devices
+    if (window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 768) {
+        return;
+    }
+    
+    document.querySelectorAll('.project-card').forEach(function(card) {
+        var inner = card.querySelector('.flip-card-inner');
+        var isHovered = false;
+        
+        card.addEventListener('mouseenter', function() {
+            isHovered = true;
+        });
+        
+        card.addEventListener('mousemove', function(e) {
+            if (!isHovered || !inner) return;
+            
+            var rect = card.getBoundingClientRect();
+            var x = e.clientX - rect.left;
+            var y = e.clientY - rect.top;
+            var centerX = rect.width / 2;
+            var centerY = rect.height / 2;
+            
+            // Calculate rotation (subtle effect: max 8 degrees)
+            var rotateX = ((y - centerY) / centerY) * -8;
+            var rotateY = ((x - centerX) / centerX) * 8;
+            
+            // Apply transform with flip + tilt (preserve the 180deg flip)
+            inner.style.transform = 'rotateY(' + (180 + rotateY) + 'deg) rotateX(' + rotateX + 'deg)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            isHovered = false;
+            if (inner) {
+                inner.style.transform = '';
+            }
+        });
+    });
+    
+    // Add project cards to cursor hover effects if custom cursor exists
+    if (typeof $ !== 'undefined') {
+        $(document).on('mouseenter', '.project-card', function() {
+            $('.custom-cursor').addClass('hover');
+        }).on('mouseleave', '.project-card', function() {
+            $('.custom-cursor').removeClass('hover');
+        });
+    }
+};

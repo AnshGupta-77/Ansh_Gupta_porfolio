@@ -1353,3 +1353,444 @@ html {
     cursor: pointer;
   }
 }
+
+/* -----------------------------------------------------
+   BUILT & BREWING - PROJECT CARDS
+   ----------------------------------------------------- */
+
+/* Section Subtitle */
+.section-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* 3D Floating Card Container */
+.project-card {
+  position: relative;
+  background: transparent;
+  perspective: 1000px;
+  min-height: 480px;
+  cursor: pointer;
+}
+
+/* Floating Animation */
+.floating-card {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Status Badges */
+.status-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 20;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.status-badge.brewing {
+  background: rgba(255, 152, 0, 0.15);
+  color: rgba(255, 152, 0, 0.95);
+  border: 1px solid rgba(255, 152, 0, 0.4);
+  box-shadow: 0 0 15px rgba(255, 152, 0, 0.2);
+}
+
+.status-badge.ready {
+  background: rgba(0, 200, 83, 0.15);
+  color: rgba(0, 200, 83, 0.95);
+  border: 1px solid rgba(0, 200, 83, 0.4);
+  box-shadow: 0 0 15px rgba(0, 200, 83, 0.2);
+}
+
+.status-badge.learning {
+  background: rgba(66, 133, 244, 0.15);
+  color: rgba(66, 133, 244, 0.95);
+  border: 1px solid rgba(66, 133, 244, 0.4);
+  box-shadow: 0 0 15px rgba(66, 133, 244, 0.2);
+}
+
+/* 3D Flip Card Inner */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.project-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front and Back Faces */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 24px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.3),
+    0 0 100px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Front Face Shine Effect */
+.flip-card-front::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transition: left 0.6s ease;
+  pointer-events: none;
+  border-radius: 24px;
+}
+
+.project-card:hover .flip-card-front::before {
+  left: 100%;
+}
+
+/* Back Face */
+.flip-card-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, rgba(214, 52, 71, 0.1), rgba(0, 0, 0, 0.5));
+  border: 1px solid rgba(214, 52, 71, 0.3);
+}
+
+/* Image Carousel */
+.project-carousel {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.carousel-images {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-images img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.carousel-images img.active {
+  opacity: 1;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.carousel-indicators span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.carousel-indicators span.active {
+  background: #D63447;
+  transform: scale(1.2);
+}
+
+/* Front Content */
+.project-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+
+.project-description {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-tags .tech-tag {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .project-tags .tech-tag {
+  background: rgba(214, 52, 71, 0.15);
+  border-color: rgba(214, 52, 71, 0.3);
+}
+
+/* Flip Hint */
+.flip-hint {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .flip-hint {
+  color: rgba(214, 52, 71, 0.8);
+  border-color: rgba(214, 52, 71, 0.3);
+}
+
+.flip-hint svg {
+  width: 16px;
+  height: 16px;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .flip-hint svg {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+/* Back Content */
+.flip-card-back h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-align: center;
+}
+
+.flip-card-back .problem {
+  font-size: 0.85rem;
+  color: rgba(255, 159, 67, 0.9);
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.flip-card-back .problem strong {
+  color: #ff9f43;
+}
+
+.flip-card-back .solution {
+  font-size: 0.85rem;
+  color: rgba(29, 209, 161, 0.9);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.flip-card-back .solution strong {
+  color: #1dd1a1;
+}
+
+.flip-card-back .features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.flip-card-back .features li {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0.35rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.flip-card-back .features li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #D63447;
+  font-weight: bold;
+}
+
+/* Back Content Scrollable */
+.back-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 0.5rem;
+}
+
+.back-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.back-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+/* GitHub Button */
+.github-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-decoration: none;
+}
+
+.github-btn:hover {
+  background: rgba(214, 52, 71, 0.2);
+  border-color: rgba(214, 52, 71, 0.5);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.github-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Project Actions */
+.project-actions {
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .project-card {
+    min-height: 420px;
+  }
+  
+  .flip-card-inner {
+    min-height: 420px;
+  }
+  
+  .flip-card-front,
+  .flip-card-back {
+    padding: 1.25rem;
+  }
+  
+  .project-carousel {
+    height: 160px;
+  }
+  
+  .project-name {
+    font-size: 1.2rem;
+  }
+  
+  .project-description {
+    font-size: 0.9rem;
+  }
+  
+  .flip-card-back h4 {
+    font-size: 1.1rem;
+  }
+  
+  .flip-card-back .problem,
+  .flip-card-back .solution {
+    font-size: 0.8rem;
+  }
+  
+  .flip-card-back .features li {
+    font-size: 0.75rem;
+  }
+  
+  .status-badge {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  /* Disable floating animation on mobile */
+  .floating-card {
+    animation: none;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .flip-card-inner {
+    transition: none;
+  }
+  
+  .project-card:hover .flip-card-inner {
+    transform: none;
+  }
+  
+  .floating-card {
+    animation: none;
+  }
+  
+  .carousel-images img {
+    transition: none;
+  }
+}

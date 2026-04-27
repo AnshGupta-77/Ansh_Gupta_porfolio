@@ -141,86 +141,210 @@
       <!-- END .cover-v1 -->
 
 
-      <!-- PROJECTS SECTION -->
+      <!-- BUILT & BREWING SECTION -->
       <div class="unslate_co--section" id="portfolio-section">
         <div class="container">
           
           <div class="section-heading-wrap text-center mb-5">
-            <h2 class="heading-h2 text-center divider"><span class="gsap-reveal">Featured Projects</span></h2>
+            <h2 class="heading-h2 text-center divider"><span class="gsap-reveal">Built & Brewing</span></h2>
+            <p class="section-subtitle gsap-reveal">A collection of products I'm building, experimenting with, and preparing to launch</p>
             <span class="gsap-reveal"><img src="images/divider.png" alt="divider" width="76"></span>
           </div>
 
-          <div class="row">
+          <div class="row projects-grid">
             <!-- PROJECT 1: Bike-Tribe -->
-            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="0">
-              <div class="project-card project-card-hover">
-                <div class="project-image-wrapper">
-                  <img src="assets/images/projects/bike-tribe.jpg" alt="Bike-Tribe Platform" class="lazyload img-fluid" onerror="this.src='images/work_1_md.jpg'">
-                  <span class="project-badge">Launching Soon</span>
-                </div>
-                <div class="project-content">
-                  <h3>Bike-Tribe</h3>
-                  <p class="project-description">Real-time riders platform for creating and joining bike rides</p>
-                  <div class="tech-stack">
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">FastAPI</span>
-                    <span class="tech-tag">PostgreSQL</span>
-                    <span class="tech-tag">WebSockets</span>
-                  </div>
-                </div>
-                <!-- Hover Overlay - Mini Case Study -->
-                <div class="project-overlay">
-                  <div class="project-overlay-content">
-                    <h4>Bike-Tribe Platform</h4>
-                    <p class="problem"><strong>Problem:</strong> Riders need a way to coordinate group rides with real-time updates and manage ride memberships efficiently.</p>
-                    <p class="solution"><strong>Solution:</strong> Built a full-stack platform with WebSocket-based real-time updates, JWT authentication, and a ride code system for seamless coordination.</p>
-                    <div class="tech-mini">
-                      <span>React</span>
-                      <span>FastAPI</span>
-                      <span>PostgreSQL</span>
-                      <span>WebSockets</span>
-                      <span>JWT Auth</span>
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="0">
+              <div class="project-card floating-card" data-project="bike-tribe">
+                <!-- Status Badge -->
+                <span class="status-badge brewing">
+                  <span>🚧</span> Brewing (Upcoming Product)
+                </span>
+                
+                <div class="flip-card-inner">
+                  <!-- FRONT -->
+                  <div class="flip-card-front">
+                    <!-- Image Carousel -->
+                    <div class="project-carousel">
+                      <div class="carousel-images">
+                        <img src="assets/images/projects/bike-tribe/img1.jpg" alt="Bike-Tribe Dashboard" class="active" onerror="this.style.display='none'">
+                        <img src="assets/images/projects/bike-tribe/img2.jpg" alt="Ride Creation" onerror="this.style.display='none'">
+                        <img src="assets/images/projects/bike-tribe/img3.jpg" alt="Live Tracking" onerror="this.style.display='none'">
+                      </div>
+                      <div class="carousel-indicators">
+                        <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                      </div>
                     </div>
-                    <a href="https://github.com/AnshGupta-77/Bike-Tribe" target="_blank" class="view-project">
-                      View Project →
-                    </a>
+                    
+                    <h3 class="project-name">Bike-Tribe</h3>
+                    <p class="project-description">Real-time riders platform for creating and joining bike rides with live updates.</p>
+                    <div class="project-tags">
+                      <span class="tech-tag">React</span>
+                      <span class="tech-tag">FastAPI</span>
+                      <span class="tech-tag">WebSockets</span>
+                      <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                    
+                    <div class="flip-hint">
+                      <span>Hover to explore</span>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" />
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  <!-- BACK -->
+                  <div class="flip-card-back">
+                    <h4>Why Bike-Tribe?</h4>
+                    <div class="back-content">
+                      <p class="problem"><strong>Problem:</strong> Riders struggle to coordinate group rides and track real-time locations across scattered messaging apps.</p>
+                      <p class="solution"><strong>Solution:</strong> A unified platform with live ride creation, GPS tracking, and instant member coordination.</p>
+                      <ul class="features">
+                        <li>Live ride creation & joining</li>
+                        <li>Real-time GPS tracking</li>
+                        <li>Push notifications for updates</li>
+                        <li>Ride history & analytics</li>
+                      </ul>
+                    </div>
+                    <div class="project-actions">
+                      <a href="https://github.com/AnshGupta-77/Bike-Tribe" target="_blank" class="github-btn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        View on GitHub
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- PROJECT 2: Liver Disease Prediction -->
-            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-              <div class="project-card project-card-hover">
-                <div class="project-image-wrapper">
-                  <img src="assets/images/projects/liver-disease.jpg" alt="Liver Disease Prediction System" class="lazyload img-fluid" onerror="this.src='images/work_2_md.jpg'">
-                </div>
-                <div class="project-content">
-                  <h3>Liver Disease Predictor</h3>
-                  <p class="project-description">ML-powered system for early liver disease detection</p>
-                  <div class="tech-stack">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Scikit-learn</span>
-                    <span class="tech-tag">Pandas</span>
-                    <span class="tech-tag">Matplotlib</span>
+            <!-- PROJECT 2: FreelanceFlow -->
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="project-card floating-card" data-project="freelanceflow">
+                <!-- Status Badge -->
+                <span class="status-badge ready">
+                  <span>🚀</span> Ready to Launch
+                </span>
+                
+                <div class="flip-card-inner">
+                  <!-- FRONT -->
+                  <div class="flip-card-front">
+                    <!-- Image Carousel -->
+                    <div class="project-carousel">
+                      <div class="carousel-images">
+                        <img src="assets/images/projects/freelanceflow/img1.jpg" alt="FreelanceFlow Dashboard" class="active" onerror="this.style.display='none'">
+                        <img src="assets/images/projects/freelanceflow/img2.jpg" alt="Client Management" onerror="this.style.display='none'">
+                        <img src="assets/images/projects/freelanceflow/img3.jpg" alt="Income Analytics" onerror="this.style.display='none'">
+                      </div>
+                      <div class="carousel-indicators">
+                        <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                    </div>
+                    
+                    <h3 class="project-name">FreelanceFlow</h3>
+                    <p class="project-description">SaaS dashboard for freelancers to manage clients, income & deadlines in one place.</p>
+                    <div class="project-tags">
+                      <span class="tech-tag">React</span>
+                      <span class="tech-tag">FastAPI</span>
+                      <span class="tech-tag">PostgreSQL</span>
+                      <span class="tech-tag">Stripe</span>
+                    </div>
+                    
+                    <div class="flip-hint">
+                      <span>Hover to explore</span>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" />
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  <!-- BACK -->
+                  <div class="flip-card-back">
+                    <h4>Why FreelanceFlow?</h4>
+                    <div class="back-content">
+                      <p class="problem"><strong>Problem:</strong> Freelancers struggle to track multiple clients, payments, and project deadlines across scattered tools.</p>
+                      <p class="solution"><strong>Solution:</strong> All-in-one dashboard with automated reminders, income tracking, and client management.</p>
+                      <ul class="features">
+                        <li>Client CRM & project pipeline</li>
+                        <li>Automated invoice generation</li>
+                        <li>Payment deadline reminders</li>
+                        <li>Smart income insights</li>
+                      </ul>
+                    </div>
+                    <div class="project-actions">
+                      <a href="https://github.com/AnshGupta-77/FreelanceFlow" target="_blank" class="github-btn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        View on GitHub
+                      </a>
+                    </div>
                   </div>
                 </div>
-                <!-- Hover Overlay - Mini Case Study -->
-                <div class="project-overlay">
-                  <div class="project-overlay-content">
-                    <h4>Liver Disease Prediction</h4>
-                    <p class="problem"><strong>Problem:</strong> Early detection of liver disease requires analyzing complex clinical data patterns that are difficult to identify manually.</p>
-                    <p class="solution"><strong>Solution:</strong> Developed an ML pipeline with data preprocessing, model training, and performance evaluation to predict liver disease with high accuracy.</p>
-                    <div class="tech-mini">
-                      <span>Python</span>
-                      <span>Pandas</span>
-                      <span>NumPy</span>
-                      <span>Scikit-learn</span>
-                      <span>Matplotlib</span>
+              </div>
+            </div>
+
+            <!-- PROJECT 3: Liver Disease Predictor -->
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+              <div class="project-card floating-card" data-project="liver-disease">
+                <!-- Status Badge -->
+                <span class="status-badge learning">
+                  <span>🎓</span> Built as a Learning Project
+                </span>
+                
+                <div class="flip-card-inner">
+                  <!-- FRONT -->
+                  <div class="flip-card-front">
+                    <!-- Image Carousel -->
+                    <div class="project-carousel">
+                      <div class="carousel-images">
+                        <img src="assets/images/projects/liver-disease/img1.jpg" alt="Prediction Interface" class="active" onerror="this.style.display='none'">
+                        <img src="assets/images/projects/liver-disease/img2.jpg" alt="Data Visualization" onerror="this.style.display='none'">
+                        <img src="assets/images/projects/liver-disease/img3.jpg" alt="Model Metrics" onerror="this.style.display='none'">
+                      </div>
+                      <div class="carousel-indicators">
+                        <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                      </div>
                     </div>
-                    <a href="https://github.com/AnshGupta-77/Liver_disease_prediction_model" target="_blank" class="view-project">
-                      View Project →
-                    </a>
+                    
+                    <h3 class="project-name">Liver Disease Predictor</h3>
+                    <p class="project-description">ML-powered system for early liver disease detection and risk analysis.</p>
+                    <div class="project-tags">
+                      <span class="tech-tag">Python</span>
+                      <span class="tech-tag">Scikit-learn</span>
+                      <span class="tech-tag">Pandas</span>
+                      <span class="tech-tag">Matplotlib</span>
+                    </div>
+                    
+                    <div class="flip-hint">
+                      <span>Hover to explore</span>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" />
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  <!-- BACK -->
+                  <div class="flip-card-back">
+                    <h4>Why Liver Disease Predictor?</h4>
+                    <div class="back-content">
+                      <p class="problem"><strong>Problem:</strong> Early detection of liver disease requires analyzing complex clinical data patterns that are difficult to identify manually.</p>
+                      <p class="solution"><strong>Solution:</strong> Developed an ML pipeline with data preprocessing, model training, and performance evaluation to predict liver disease with high accuracy.</p>
+                      <ul class="features">
+                        <li>Risk detection algorithm</li>
+                        <li>Data visualization charts</li>
+                        <li>Model training pipeline</li>
+                        <li>Performance metrics dashboard</li>
+                      </ul>
+                    </div>
+                    <div class="project-actions">
+                      <a href="https://github.com/AnshGupta-77/Liver_disease_prediction_model" target="_blank" class="github-btn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        View on GitHub
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -229,7 +353,7 @@
 
         </div>
       </div>
-      <!-- END PROJECTS SECTION -->
+      <!-- END BUILT & BREWING SECTION -->
 
 
       <!-- SERVICES SECTION -->
