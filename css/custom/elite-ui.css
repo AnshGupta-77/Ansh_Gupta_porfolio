@@ -1,0 +1,121 @@
+/* ===== GLOBAL SMOOTHNESS ===== */
+* {
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ===== PRODUCT PIPELINE ===== */
+.pipeline-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* ===== CARD BASE ===== */
+.project-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* ===== 3D HOVER ===== */
+.project-card:hover {
+  transform: translateY(-15px) scale(1.03) rotateX(4deg) rotateY(-4deg);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+}
+
+/* ===== IMAGE DOMINANCE ===== */
+.project-image {
+  height: 300px;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.08);
+}
+
+.project-card:hover img {
+  transform: scale(1.15);
+}
+
+/* ===== EXPAND EFFECT ===== */
+.project-content {
+  padding: 22px;
+  transform: translateZ(20px);
+}
+
+.project-card:hover .project-content {
+  transform: translateZ(40px);
+}
+
+/* ===== BADGES ===== */
+.project-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.dev { background: rgba(255,170,0,0.2); color: #ffaa00; }
+.live { background: rgba(0,255,200,0.2); color: #00ffcc; }
+.exp { background: rgba(150,150,255,0.2); color: #aaaaff; }
+
+/* ===== CURSOR GLOW ===== */
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x) var(--y),
+    rgba(255,255,255,0.1), transparent 40%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* ===== FEATURED SECTION ===== */
+.featured {
+  margin-top: 100px;
+}
+
+.featured img {
+  width: 100%;
+  border-radius: 20px;
+  transform: scale(1.02);
+}
+
+/* ===== CTA ===== */
+.cta {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.cta button {
+  padding: 14px 28px;
+  border-radius: 40px;
+  border: none;
+  background: linear-gradient(90deg, #00ffcc, #00ffaa);
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0,255,200,0.3);
+}
