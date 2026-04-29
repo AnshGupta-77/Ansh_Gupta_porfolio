@@ -1,4 +1,4 @@
-// ===== IMAGE ROTATION =====
+// ===== SMOOTH IMAGE ROTATION =====
 const images = {
   biketribe: [
     "assets/images/projects/bike-tribe/img1.jpg",
@@ -22,8 +22,16 @@ function rotate(id, arr) {
 
   setInterval(() => {
     i = (i + 1) % arr.length;
-    el.src = arr[i];
-  }, 2500);
+    
+    // Smooth fade out
+    el.style.opacity = 0;
+    
+    setTimeout(() => {
+      el.src = arr[i];
+      // Smooth fade in
+      el.style.opacity = 1;
+    }, 400);
+  }, 3000);
 }
 
 // Initialize on DOM load
@@ -39,5 +47,24 @@ document.addEventListener('DOMContentLoaded', function() {
       card.style.setProperty('--x', `${e.clientX - rect.left}px`);
       card.style.setProperty('--y', `${e.clientY - rect.top}px`);
     });
+  });
+
+  // ===== SCROLL REVEAL =====
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal, .project-card, .featured, .cta').forEach(el => {
+    el.classList.add('reveal');
+    observer.observe(el);
   });
 });

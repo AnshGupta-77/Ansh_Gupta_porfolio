@@ -107,6 +107,11 @@
                   Available for Work
                 </div>
                 
+                <!-- Proof Line -->
+                <div class="proof-line gsap-reveal-hero">
+                  Currently building products & shipping code for clients
+                </div>
+                
                 <h1 class="heading gsap-reveal-hero">Ansh Gupta</h1>
                 <h2 class="subheading gsap-reveal-hero">Full-Stack Developer (React + FastAPI)</h2>
                 <p class="hero-tagline gsap-reveal-hero">Stack by Ansh</p>
@@ -165,6 +170,9 @@
               <div class="project-content">
                 <h3>BikeTribe</h3>
                 <p>Real-time riders platform with live tracking. Create and join bike rides with live updates.</p>
+                <div class="expand-content">
+                  <p>React • FastAPI • WebSockets • PostgreSQL</p>
+                </div>
               </div>
             </div>
 
@@ -177,6 +185,9 @@
               <div class="project-content">
                 <h3>FreelanceFlow</h3>
                 <p>Manage clients, income & deadlines in one place. SaaS dashboard for freelancers.</p>
+                <div class="expand-content">
+                  <p>React • FastAPI • PostgreSQL • Stripe</p>
+                </div>
               </div>
             </div>
 
@@ -189,6 +200,9 @@
               <div class="project-content">
                 <h3>Liver Disease Predictor</h3>
                 <p>ML-based disease prediction system. Built as a learning project with data visualization.</p>
+                <div class="expand-content">
+                  <p>Python • Scikit-learn • Pandas • Matplotlib</p>
+                </div>
               </div>
             </div>
 
@@ -198,26 +212,6 @@
       </div>
       <!-- END BUILT & BREWING SECTION -->
 
-      <!-- FEATURED PRODUCT SECTION -->
-      <section class="featured unslate_co--section">
-        <div class="container">
-          <div class="section-heading-wrap text-center mb-5">
-            <h2 class="heading-h2 text-center divider">
-              <span class="gsap-reveal">Featured Product</span>
-            </h2>
-            <span class="gsap-reveal"><img src="images/divider.png" alt="divider" width="76"></span>
-          </div>
-          <img src="assets/images/projects/freelanceflow/img1.jpg" alt="Featured Product" loading="lazy">
-        </div>
-      </section>
-
-      <!-- CTA SECTION -->
-      <section class="cta unslate_co--section">
-        <div class="container">
-          <h2 class="gsap-reveal">Looking to build your next product?</h2>
-          <button class="gsap-reveal" onclick="window.location.href='#contact-section'">Let's Ship It 🚀</button>
-        </div>
-      </section>
 
       <!-- SERVICES SECTION -->
       <div class="unslate_co--section" id="services-section">
@@ -278,6 +272,15 @@
       </div>
       <!-- END SERVICES SECTION -->
 
+      <!-- CTA SECTION -->
+      <section class="cta unslate_co--section">
+        <div class="container">
+          <h2 class="gsap-reveal">Need a Product Built?</h2>
+          <p class="gsap-reveal">I help startups and businesses turn ideas into scalable, production-ready applications.</p>
+          <button class="gsap-reveal" onclick="window.location.href='#contact-section'">Start Your Project 🚀</button>
+        </div>
+      </section>
+
       <!-- TECH STACK SECTION -->
       <div class="unslate_co--section" id="tech-section">
         <div class="container">
@@ -307,7 +310,7 @@
             </div>
             <div class="tech-item" data-aos="fade-up" data-aos-delay="150">
               <div class="tech-icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" stroke="currentColor" stroke-width="1.5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
               </div>
               <span class="tech-name">Python</span>
             </div>
@@ -319,7 +322,7 @@
             </div>
             <div class="tech-item" data-aos="fade-up" data-aos-delay="250">
               <div class="tech-icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke="currentColor" stroke-width="1.5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
               </div>
               <span class="tech-name">ML/AI</span>
             </div>
@@ -446,7 +449,6 @@
         </div>
       </div>
       <!-- END TRUST SIGNALS SECTION -->
-
 
       <!-- CONTACT SECTION -->
       <div class="unslate_co--section" id="contact-section">
