@@ -18,8 +18,8 @@
     
     <!-- Theme Style -->
     <link rel="stylesheet" href="css/style.css">
-    <!-- Elite UI Styles -->
-    <link rel="stylesheet" href="css/custom/elite-ui.css">
+    <!-- Elite Styles -->
+    <link rel="stylesheet" href="css/custom/elite.css">
 
   </head>
   <body data-spy="scroll" data-target=".site-nav-target" data-offset="200">
@@ -86,47 +86,31 @@
       </nav>
       <!-- END nav -->
 
-      <div class="cover-v1 jarallax" id="home-section">
-        <!-- Background Image Layer -->
-        <div class="hero-bg-image"></div>
-        
+      <div class="cover-v1 jarallax hero-centered" id="home-section">
         <div class="container">
-          <div class="row align-items-center">
-              
-            <div class="col-md-8 mx-auto text-center">
-              <!-- Profile Image - z-index 3 -->
-              <div class="hero-profile gsap-reveal-hero">
+          <div class="row">
+            <div class="col-md-8 mx-auto">
+              <!-- Profile Image with Glow -->
+              <div class="hero-profile hero-float">
+                <div class="hero-glow"></div>
                 <img src="assets/images/profile.jpg" alt="Ansh Gupta">
               </div>
               
-              <!-- Text Content - z-index 2 with animation -->
+              <!-- Text Content -->
               <div class="hero-text-content">
+                <h1>Ansh Gupta</h1>
+                <p class="tagline">Full-Stack Developer</p>
+                <p class="intro">Building scalable, high-performance web applications with React and FastAPI. Turning ideas into production-ready solutions.</p>
+                
                 <!-- Status Badge -->
-                <div class="status-badge gsap-reveal-hero">
-                  <span class="status-dot"></span>
+                <div class="proof-line">
+                  <span></span>
                   Available for Work
                 </div>
                 
-                <!-- Proof Line -->
-                <div class="proof-line gsap-reveal-hero">
-                  Currently building products & shipping code for clients
-                </div>
-                
-                <h1 class="heading gsap-reveal-hero">Ansh Gupta</h1>
-                <h2 class="subheading gsap-reveal-hero">Full-Stack Developer (React + FastAPI)</h2>
-                <p class="hero-tagline gsap-reveal-hero">Stack by Ansh</p>
-                <p class="hero-mission gsap-reveal-hero">Building scalable, high-performance web applications for real-world problems.</p>
-                <p class="hero-bio gsap-reveal-hero">Full-Stack Developer specializing in React and FastAPI, focused on building scalable backend systems and real-time web applications. Currently developing Bike-Tribe, a community platform for riders, and working with early-stage clients to turn ideas into production-ready solutions.</p>
-                <div class="hero-cta-buttons gsap-reveal-hero">
+                <div class="hero-cta-buttons">
                   <a href="#portfolio-section" class="btn btn-outline-pill btn-custom-light">View Work</a>
                   <a href="#contact-section" class="btn btn-outline-pill btn-custom-light">Contact Me</a>
-                  <a href="assets/resume/Ansh_Gupta_Resume.pdf" target="_blank" class="btn btn-outline-pill btn-custom-light">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 6px;">
-                      <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                      <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-                    </svg>
-                    Resume
-                  </a>
                 </div>
               </div>
             </div>
@@ -163,7 +147,7 @@
             
             <!-- PROJECT 1: BikeTribe -->
             <div class="project-card" data-aos="fade-up" data-aos-delay="0">
-              <div class="project-badge badge-dev">🧪 In Development</div>
+              <div class="project-badge badge-dvv In DIn Developmeptent</div>
               <div class="project-image">
                 <img id="bike-img" src="assets/images/projects/bike-tribe/img1.png" alt="BikeTribe Dashboard" loading="lazy">
               </div>
@@ -178,9 +162,9 @@
 
             <!-- PROJECT 2: FreelanceFlow -->
             <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-              <div class="project-badge badge-live">🚀 Production Ready</div>
+              <div class="project-badge badge-ready">🚀 Ready</div>
               <div class="project-image">
-                <img id="free-img" src="assets/images/projects/freelanceflow/img1.png" alt="FreelanceFlow Dashboard" loading="lazy">
+                <img id="freelance-img" src="assets/images/projects/freelanceflow/img1.png" alt="FreelanceFlow Dashboard" loading="lazy">
               </div>
               <div class="project-content">
                 <h3>FreelanceFlow</h3>
@@ -193,7 +177,7 @@
 
             <!-- PROJECT 3: Liver Disease Predictor -->
             <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-              <div class="project-badge badge-exp">🧠 Experimental Build</div>
+              <div class="project-badge badge-learning">🧠 Learning</div>
               <div class="project-image">
                 <img id="liver-img" src="assets/images/projects/liver-disease/img1.png" alt="Liver Disease Predictor" loading="lazy">
               </div>
@@ -213,12 +197,12 @@
       <!-- END BUILT & BREWING SECTION -->
 
 
-      <!-- SERVICES SECTION -->
+      <!-- WHAT I BUILD SECTION -->
       <div class="unslate_co--section" id="services-section">
         <div class="container">
 
           <div class="section-heading-wrap text-center mb-5">
-            <h2 class="heading-h2 text-center divider"><span class="gsap-reveal">Services</span></h2>
+            <h2 class="heading-h2 text-center divider"><span class="gsap-reveal">What I Build</span></h2>
             <span class="gsap-reveal"><img src="images/divider.png" alt="divider" width="76"></span>
           </div>
 
@@ -331,7 +315,7 @@
       </div>
       <!-- END TECH STACK SECTION -->
 
-      <!-- PROCESS SECTION -->
+      <!-- HOW I WORK SECTION -->
       <div class="unslate_co--section" id="process-section">
         <div class="container">
           <div class="section-heading-wrap text-center mb-5">
@@ -339,116 +323,54 @@
             <span class="gsap-reveal"><img src="images/divider.png" alt="divider" width="76"></span>
           </div>
 
-          <div class="process-timeline">
-            <div class="process-step" data-aos="fade-up" data-aos-delay="0">
-              <div class="process-number">1</div>
-              <div class="process-content">
-                <h4>Understanding Requirements</h4>
-                <p>Deep dive into your needs, goals, and target audience</p>
-              </div>
+          <div class="process-grid">
+            <div class="process-card reveal" data-aos="fade-up" data-aos-delay="0">
+              <span class="process-step">01</span>
+              <h3>Idea</h3>
+              <p>Understanding your vision, goals, and requirements</p>
             </div>
-            <div class="process-step" data-aos="fade-up" data-aos-delay="100">
-              <div class="process-number">2</div>
-              <div class="process-content">
-                <h4>Designing System Architecture</h4>
-                <p>Planning scalable solutions and choosing the right tech stack</p>
-              </div>
+            <div class="process-card reveal" data-aos="fade-up" data-aos-delay="100">
+              <span class="process-step">02</span>
+              <h3>Build</h3>
+              <p>Developing with clean architecture and best practices</p>
             </div>
-            <div class="process-step" data-aos="fade-up" data-aos-delay="200">
-              <div class="process-number">3</div>
-              <div class="process-content">
-                <h4>Development and Iteration</h4>
-                <p>Agile development with regular updates and feedback loops</p>
-              </div>
+            <div class="process-card reveal" data-aos="fade-up" data-aos-delay="200">
+              <span class="process-step">03</span>
+              <h3>Iterate</h3>
+              <p>Refining through feedback and continuous improvement</p>
             </div>
-            <div class="process-step" data-aos="fade-up" data-aos-delay="300">
-              <div class="process-number">4</div>
-              <div class="process-content">
-                <h4>Delivery and Support</h4>
-                <p>Deployment, documentation, and ongoing maintenance</p>
-              </div>
+            <div class="process-card reveal" data-aos="fade-up" data-aos-delay="300">
+              <span class="process-step">04</span>
+              <h3>Deliver</h3>
+              <p>Deploying and providing ongoing support</p>
             </div>
           </div>
         </div>
       </div>
-      <!-- END PROCESS SECTION -->
+      <!-- END HOW I WORK SECTION -->
 
-
-      <!-- SYSTEM THINKING SECTION -->
-      <div class="unslate_co--section" id="system-section">
+      <!-- ABOUT ME SECTION -->
+      <div class="unslate_co--section" id="about-section">
         <div class="container">
           <div class="section-heading-wrap text-center mb-5">
-            <h2 class="heading-h2 text-center divider"><span class="gsap-reveal">How I Build Systems</span></h2>
+            <h2 class="heading-h2 text-center divider"><span class="gsap-reveal">About Me</span></h2>
             <span class="gsap-reveal"><img src="images/divider.png" alt="divider" width="76"></span>
           </div>
 
-          <div class="row justify-content-center">
-            <div class="col-md-10">
-              <div class="system-flow-wrapper" data-aos="fade-up">
-                <div class="system-flow">
-                  <div class="system-node">
-                    <span class="node-icon">🎨</span>
-                    <span class="node-label">Frontend</span>
-                    <span class="node-tech">React</span>
-                  </div>
-                  <span class="flow-arrow">→</span>
-                  <div class="system-node">
-                    <span class="node-icon">🔌</span>
-                    <span class="node-label">API</span>
-                    <span class="node-tech">REST/WS</span>
-                  </div>
-                  <span class="flow-arrow">→</span>
-                  <div class="system-node">
-                    <span class="node-icon">⚙️</span>
-                    <span class="node-label">Backend</span>
-                    <span class="node-tech">FastAPI</span>
-                  </div>
-                  <span class="flow-arrow">→</span>
-                  <div class="system-node">
-                    <span class="node-icon">🗄️</span>
-                    <span class="node-label">Database</span>
-                    <span class="node-tech">PostgreSQL</span>
-                  </div>
-                  <span class="flow-arrow">→</span>
-                  <div class="system-node">
-                    <span class="node-icon">⚡</span>
-                    <span class="node-label">Real-time</span>
-                    <span class="node-tech">WebSockets</span>
-                  </div>
-                </div>
-                <p class="system-description text-center mt-4">End-to-end architecture designed for scalability, performance, and real-time user experiences.</p>
-              </div>
+          <div class="about-split">
+            <div class="about-image reveal">
+              <img src="images/work_1_md.jpg" alt="About Ansh Gupta">
+            </div>
+            <div class="about-content reveal">
+              <h2>The Story So Far</h2>
+              <p>I'm a full-stack developer passionate about building products that solve real problems. My journey started with curiosity about how things work, evolved into writing code, and grew into building complete systems.</p>
+              <p>Today, I help startups and businesses turn ideas into scalable applications. Whether it's a real-time platform like BikeTribe or a SaaS dashboard like FreelanceFlow, I focus on clean architecture and smooth user experiences.</p>
+              <p>When I'm not coding, you'll find me exploring new tech, optimizing performance, or learning something new.</p>
             </div>
           </div>
         </div>
       </div>
-      <!-- END SYSTEM THINKING SECTION -->
-
-
-      <!-- TRUST SIGNALS SECTION -->
-      <div class="unslate_co--section trust-section" id="trust-section">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-md-10">
-              <div class="trust-signals" data-aos="fade-up">
-                <div class="trust-item">
-                  <span class="trust-icon">⚡</span>
-                  <p>Fast response time</p>
-                </div>
-                <div class="trust-item">
-                  <span class="trust-icon">🚀</span>
-                  <p>Actively working on real-world projects</p>
-                </div>
-                <div class="trust-item">
-                  <span class="trust-icon">🛠️</span>
-                  <p>Focused on scalable backend systems</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- END TRUST SIGNALS SECTION -->
+      <!-- END ABOUT ME SECTION -->
 
       <!-- CONTACT SECTION -->
       <div class="unslate_co--section" id="contact-section">
@@ -561,7 +483,7 @@
 
     <script src="js/scripts-dist.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/custom/elite-ui.js"></script>
+    <script src="js/custom/elite.js"></script>
 
   </body>
 </html>
