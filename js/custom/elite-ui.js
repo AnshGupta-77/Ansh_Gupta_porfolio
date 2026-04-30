@@ -1,18 +1,18 @@
-// ===== SMOOTH IMAGE ROTATION =====
+// ===== CLEAN IMAGE ROTATION - SMOOTH SLIDESHOW =====
 const images = {
   biketribe: [
-    "assets/images/projects/bike-tribe/img1.jpg",
-    "assets/images/projects/bike-tribe/img2.jpg",
-    "assets/images/projects/bike-tribe/img3.jpg",
-    "assets/images/projects/bike-tribe/img4.jpg"
+    "assets/images/projects/bike-tribe/img1.png",
+    "assets/images/projects/bike-tribe/img2.png",
+    "assets/images/projects/bike-tribe/img3.png",
+    "assets/images/projects/bike-tribe/img4.png"
   ],
   freelance: [
-    "assets/images/projects/freelanceflow/img1.jpg",
-    "assets/images/projects/freelanceflow/img2.jpg",
-    "assets/images/projects/freelanceflow/img3.jpg",
-    "assets/images/projects/freelanceflow/img4.jpg"
+    "assets/images/projects/freelanceflow/img1.png",
+    "assets/images/projects/freelanceflow/img2.png",
+    "assets/images/projects/freelanceflow/img3.png",
+    "assets/images/projects/freelanceflow/img4.png"
   ],
-  liver: ["assets/images/projects/liver-disease/img1.jpg"]
+  liver: ["assets/images/projects/liver-disease/img1.png"]
 };
 
 function rotate(id, arr) {
@@ -23,15 +23,15 @@ function rotate(id, arr) {
   setInterval(() => {
     i = (i + 1) % arr.length;
     
-    // Smooth fade out
+    // Gentle fade out
     el.style.opacity = 0;
     
     setTimeout(() => {
       el.src = arr[i];
-      // Smooth fade in
+      // Gentle fade in
       el.style.opacity = 1;
-    }, 400);
-  }, 3000);
+    }, 700);
+  }, 5000);
 }
 
 // Initialize on DOM load
@@ -40,19 +40,10 @@ document.addEventListener('DOMContentLoaded', function() {
   rotate("free-img", images.freelance);
   rotate("liver-img", images.liver);
 
-  // ===== CURSOR GLOW =====
-  document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      card.style.setProperty('--x', `${e.clientX - rect.left}px`);
-      card.style.setProperty('--y', `${e.clientY - rect.top}px`);
-    });
-  });
-
-  // ===== SCROLL REVEAL =====
+  // ===== LIGHT SCROLL REVEAL =====
   const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    rootMargin: '0px 0px -30px 0px'
   };
 
   const observer = new IntersectionObserver((entries) => {
