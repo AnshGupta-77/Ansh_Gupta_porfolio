@@ -35,8 +35,8 @@ function initImageRotation(id, images) {
       img.src = images[currentIndex];
       // Fade in
       img.style.opacity = '1';
-    }, 400);
-  }, 3000);
+    }, 500);
+  }, 6000);
 }
 
 // ===== SCROLL REVEAL =====

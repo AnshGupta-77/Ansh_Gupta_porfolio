@@ -19,6 +19,68 @@
   box-sizing: border-box;
 }
 
+/* ===== NAVBAR LOGO FIX ===== */
+.site-logo img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== BUTTONS UPGRADE ===== */
+.btn-primary,
+.btn-outline-pill {
+  background: linear-gradient(135deg, var(--coral), var(--lavender)) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 14px 32px !important;
+  font-weight: 600 !important;
+  color: #000 !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer;
+}
+
+.btn-primary:hover,
+.btn-outline-pill:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 8px 25px rgba(255, 182, 182, 0.4) !important;
+}
+
+/* ===== SECTION SPACING FIX ===== */
+.unslate_co--section {
+  padding: 80px 0;
+}
+
+/* ===== CONTACT BUTTONS ===== */
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--coral), var(--lavender));
+  color: #000;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin: 8px;
+}
+
+.contact-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 182, 182, 0.4);
+}
+
+.contact-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
 /* ===== HERO SECTION - CENTERED ===== */
 .hero-centered {
   display: flex;
