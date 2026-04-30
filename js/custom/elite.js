@@ -79,21 +79,6 @@ function initScrollReveal() {
   document.querySelectorAll('.stagger-container').forEach(el => staggerObserver.observe(el));
 }
 
-// ===== HERO FADE IN =====
-function initHeroAnimation() {
-  const heroContent = document.querySelector('.hero-centered .container');
-  if (heroContent) {
-    heroContent.style.opacity = '0';
-    heroContent.style.transform = 'translateY(30px)';
-    heroContent.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
-    
-    setTimeout(() => {
-      heroContent.style.opacity = '1';
-      heroContent.style.transform = 'translateY(0)';
-    }, 200);
-  }
-}
-
 // ===== PARALLAX SUBTLE =====
 function initParallax() {
   let ticking = false;
@@ -236,14 +221,118 @@ function initWebGLHero() {
   });
 }
 
+// ===== INTRO SCREEN =====
+function initIntroScreen() {
+  const intro = document.getElementById('intro-screen');
+  if (!intro) return;
+  
+  // Check if already seen this session
+  if (sessionStorage.getItem('introSeen')) {
+    intro.classList.add('skip');
+    document.body.style.overflow = '';
+    return;
+  }
+  
+  // Prevent scrolling during intro
+  document.body.style.overflow = 'hidden';
+  
+  // Hide after animation completes
+  setTimeout(() => {
+    intro.classList.add('hidden');
+    document.body.style.overflow = '';
+    sessionStorage.setItem('introSeen', 'true');
+    
+    // Trigger hero animation after intro
+    setTimeout(() => initHeroStagger(), 300);
+  }, 1800);
+}
+
+// ===== HERO STAGGERED ENTRANCE (Level 1 - Primary) =====
+function initHeroStagger() {
+  const heroElements = document.querySelectorAll('.hero-stagger');
+  heroElements.forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    setTimeout(() => {
+      el.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, i * 150);
+  });
+}
+
+// ===== MOTION HIERARCHY - SCROLL REVEAL =====
+// Level 1: Primary (Headings) - scale + fade
+// Level 2: Content (Cards) - fade + slide  
+// Level 3: Micro (Buttons) - hover only
+function initScrollReveal() {
+  // Level 1: Headings - stronger animation
+  const level1Observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('level1-active');
+        level1Observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+  
+  document.querySelectorAll('.level1-reveal').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'scale(0.95) translateY(30px)';
+    el.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+    level1Observer.observe(el);
+  });
+  
+  // Level 2: Content - standard fade + slide
+  const level2Observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        const delay = entry.target.dataset.delay || index * 80;
+        setTimeout(() => {
+          entry.target.classList.add('level2-active');
+        }, delay);
+        level2Observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
+  
+  document.querySelectorAll('.level2-reveal').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+    level2Observer.observe(el);
+  });
+  
+  // Legacy reveal support
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+  
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+}
+
+// Active states for motion hierarchy
+const style = document.createElement('style');
+style.textContent = `
+  .level1-active { opacity: 1 !important; transform: scale(1) translateY(0) !important; }
+  .level2-active { opacity: 1 !important; transform: translateY(0) !important; }
+`;
+document.head.appendChild(style);
+
 // ===== INIT ALL =====
 document.addEventListener('DOMContentLoaded', () => {
+  initIntroScreen();
+  
   initImageRotation('bike-img', projectImages.biketribe);
   initImageRotation('freelance-img', projectImages.freelanceflow);
   initImageRotation('liver-img', projectImages.liver);
   
   initScrollReveal();
-  initHeroAnimation();
   initParallax();
   initWebGLHero();
 });
