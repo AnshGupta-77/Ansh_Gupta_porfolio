@@ -143,50 +143,50 @@
             <span class="gsap-reveal"><img src="images/divider.png" alt="divider" width="76"></span>
           </div>
 
-          <div class="projects-grid">
+          <div class="projects-list">
             
-            <!-- PROJECT 1: BikeTribe -->
-            <div class="project-card" data-aos="fade-up" data-aos-delay="0">
-              <div class="project-badge badge-dvv In DIn Developmeptent</div>
-              <div class="project-image">
-                <img id="bike-img" src="assets/images/projects/bike-tribe/img1.png" alt="BikeTribe Dashboard" loading="lazy">
+            <!-- PROJECT 1: BikeTribe - Image LEFT -->
+            <div class="project-row reveal" data-direction="left">
+              <div class="project-visual">
+                <div class="project-image-wrap">
+                  <img id="bike-img" src="assets/images/projects/bike-tribe/img1.png" alt="BikeTribe Dashboard" loading="lazy">
+                </div>
               </div>
-              <div class="project-content">
+              <div class="project-info">
+                <span class="project-tag tag-dev">In Development</span>
                 <h3>BikeTribe</h3>
-                <p>Real-time riders platform with live tracking. Create and join bike rides with live updates.</p>
-                <div class="expand-content">
-                  <p>React • FastAPI • WebSockets • PostgreSQL</p>
-                </div>
+                <p class="project-desc">Real-time riders platform with live tracking. Create and join bike rides with live updates and route sharing.</p>
+                <p class="project-tech">React • FastAPI • WebSockets • PostgreSQL</p>
               </div>
             </div>
 
-            <!-- PROJECT 2: FreelanceFlow -->
-            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-              <div class="project-badge badge-ready">🚀 Ready</div>
-              <div class="project-image">
-                <img id="freelance-img" src="assets/images/projects/freelanceflow/img1.png" alt="FreelanceFlow Dashboard" loading="lazy">
-              </div>
-              <div class="project-content">
+            <!-- PROJECT 2: FreelanceFlow - Image RIGHT -->
+            <div class="project-row reveal" data-direction="right">
+              <div class="project-info">
+                <span class="project-tag tag-ready">Ready</span>
                 <h3>FreelanceFlow</h3>
-                <p>Manage clients, income & deadlines in one place. SaaS dashboard for freelancers.</p>
-                <div class="expand-content">
-                  <p>React • FastAPI • PostgreSQL • Stripe</p>
+                <p class="project-desc">Manage clients, income & deadlines in one unified dashboard. Built for freelancers who need clarity.</p>
+                <p class="project-tech">React • FastAPI • PostgreSQL • Stripe</p>
+              </div>
+              <div class="project-visual">
+                <div class="project-image-wrap">
+                  <img id="freelance-img" src="assets/images/projects/freelanceflow/img1.png" alt="FreelanceFlow Dashboard" loading="lazy">
                 </div>
               </div>
             </div>
 
-            <!-- PROJECT 3: Liver Disease Predictor -->
-            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-              <div class="project-badge badge-learning">🧠 Learning</div>
-              <div class="project-image">
-                <img id="liver-img" src="assets/images/projects/liver-disease/img1.png" alt="Liver Disease Predictor" loading="lazy">
-              </div>
-              <div class="project-content">
-                <h3>Liver Disease Predictor</h3>
-                <p>ML-based disease prediction system. Built as a learning project with data visualization.</p>
-                <div class="expand-content">
-                  <p>Python • Scikit-learn • Pandas • Matplotlib</p>
+            <!-- PROJECT 3: Liver Disease Predictor - Image LEFT -->
+            <div class="project-row reveal" data-direction="left">
+              <div class="project-visual">
+                <div class="project-image-wrap">
+                  <img id="liver-img" src="assets/images/projects/liver-disease/img1.png" alt="Liver Disease Predictor" loading="lazy">
                 </div>
+              </div>
+              <div class="project-info">
+                <span class="project-tag tag-learning">Learning</span>
+                <h3>Liver Disease Predictor</h3>
+                <p class="project-desc">ML-based disease prediction system with data visualization. Built to understand healthcare ML pipelines.</p>
+                <p class="project-tech">Python • Scikit-learn • Pandas • Matplotlib</p>
               </div>
             </div>
 
@@ -257,11 +257,17 @@
       <!-- END SERVICES SECTION -->
 
       <!-- CTA SECTION -->
-      <section class="cta unslate_co--section">
+      <section class="cta-section unslate_co--section" id="cta-section">
         <div class="container">
-          <h2 class="gsap-reveal">Have a product idea? I'll build it.</h2>
-          <p class="gsap-reveal">Full-stack development from concept to launch.</p>
-          <button class="gsap-reveal" onclick="window.location.href='#contact-section'">Let's Talk</button>
+          <div class="cta-flex reveal">
+            <div class="cta-text">
+              <h2>Have a product idea? Let's build something impactful.</h2>
+              <p>I design and develop full-stack systems — from concept to scalable production.</p>
+            </div>
+            <a href="#contact-section" class="cta-button">
+              Start a Project <span class="arrow">→</span>
+            </a>
+          </div>
         </div>
       </section>
 
