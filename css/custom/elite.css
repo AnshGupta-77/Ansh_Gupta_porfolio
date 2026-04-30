@@ -56,6 +56,20 @@
   padding: 80px 0;
 }
 
+/* Remove dead space between hero and first section */
+.cover-v1 + .unslate_co--section {
+  margin-top: 0;
+}
+
+.jarallax + .unslate_co--section {
+  margin-top: 0;
+}
+
+/* Ensure smooth flow */
+#portfolio-section {
+  padding-top: 60px;
+}
+
 /* ===== CONTACT BUTTONS ===== */
 .contact-btn {
   display: inline-flex;
@@ -86,15 +100,37 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 80px 20px 60px;
+  min-height: 85vh;
+  height: auto;
+  padding: 100px 20px 60px;
+}
+
+.hero-centered .container {
+  height: auto;
+  min-height: auto;
+}
+
+.hero-centered .container > .row {
+  height: auto;
+  min-height: auto;
+}
+
+.hero-centered .col-md-8 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  float: none;
 }
 
 .hero-profile {
   position: relative;
   width: 150px;
   height: 150px;
-  margin-bottom: 30px;
+  margin: 0 auto 24px;
 }
 
 .hero-profile img {
@@ -103,6 +139,7 @@
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid rgba(255,255,255,0.1);
+  display: block;
 }
 
 .hero-glow {
@@ -110,15 +147,15 @@
   inset: -10px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--coral), var(--lavender));
-  opacity: 0.3;
-  filter: blur(20px);
+  opacity: 0.4;
+  filter: blur(25px);
   animation: glowPulse 4s ease-in-out infinite;
   z-index: -1;
 }
 
 @keyframes glowPulse {
   0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.05); }
+  50% { opacity: 0.5; transform: scale(1.08); }
 }
 
 .hero-float {
@@ -127,13 +164,21 @@
 
 @keyframes heroFloat {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-8px); }
+}
+
+.hero-text-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .hero-centered h1 {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 8px;
+  letter-spacing: 1px;
   background: linear-gradient(90deg, var(--coral), var(--lavender));
   -webkit-background-clip: text;
   background-clip: text;
@@ -141,16 +186,28 @@
 }
 
 .hero-centered .tagline {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--text-secondary);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
 }
 
 .hero-centered .intro {
-  max-width: 500px;
-  font-size: 0.95rem;
+  max-width: 480px;
+  font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.hero-cta-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.proof-line {
+  margin: 12px 0 16px;
 }
 
 /* ===== ABOUT ME - SPLIT LAYOUT ===== */
@@ -166,6 +223,7 @@
   position: relative;
   border-radius: 20px;
   overflow: hidden;
+  background: linear-gradient(135deg, rgba(255,182,182,0.1), rgba(197,163,255,0.1));
 }
 
 .about-image img {
@@ -173,14 +231,16 @@
   height: 400px;
   object-fit: cover;
   border-radius: 20px;
+  display: block;
 }
 
-.about-image::after {
+.about-image::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent 50%);
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
   border-radius: 20px;
+  z-index: 1;
 }
 
 .about-content h2 {
@@ -225,9 +285,10 @@
 
 /* ===== IMAGE CONTAINER ===== */
 .project-image {
-  height: 250px;
+  height: 260px;
+  width: 100%;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 16px;
   margin: 16px 16px 0;
   background: rgba(0,0,0,0.2);
   display: flex;
@@ -240,13 +301,11 @@
   height: 100%;
   object-fit: cover;
   opacity: 1;
-  transition: opacity var(--transition-medium), transform var(--transition-fast);
-  border-radius: 8px;
+  transition: opacity var(--transition-medium);
+  border-radius: 16px;
 }
 
-.project-card:hover .project-image img {
-  transform: scale(1.05);
-}
+/* NO zoom on hover - only card lift */
 
 /* ===== CARD CONTENT ===== */
 .project-content {
