@@ -223,25 +223,28 @@ function initWebGLHero() {
 
 // ===== INTRO SCREEN =====
 function initIntroScreen() {
+  // V2 cinematic intro is handled entirely by cinematic.js — skip v1
+  if (document.querySelector('.intro-v2')) return;
+
   const intro = document.getElementById('intro-screen');
   if (!intro) return;
-  
+
   // Check if already seen this session
   if (sessionStorage.getItem('introSeen')) {
     intro.classList.add('skip');
     document.body.style.overflow = '';
     return;
   }
-  
+
   // Prevent scrolling during intro
   document.body.style.overflow = 'hidden';
-  
+
   // Hide after animation completes
   setTimeout(() => {
     intro.classList.add('hidden');
     document.body.style.overflow = '';
     sessionStorage.setItem('introSeen', 'true');
-    
+
     // Trigger hero animation after intro
     setTimeout(() => initHeroStagger(), 300);
   }, 1800);
@@ -249,6 +252,9 @@ function initIntroScreen() {
 
 // ===== HERO STAGGERED ENTRANCE (Level 1 - Primary) =====
 function initHeroStagger() {
+  // V2 cinematic hero handles its own entrance — skip v1
+  if (document.querySelector('.hero-cinematic')) return;
+
   const heroElements = document.querySelectorAll('.hero-stagger');
   heroElements.forEach((el, i) => {
     el.style.opacity = '0';
