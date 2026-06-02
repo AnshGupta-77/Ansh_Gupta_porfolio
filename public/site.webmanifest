@@ -1,0 +1,12 @@
+{
+  "name": "Ansh Gupta — Build Worlds",
+  "short_name": "Ansh Gupta",
+  "description": "Systems architect, product engineer, and founder.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#8B5CF6",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

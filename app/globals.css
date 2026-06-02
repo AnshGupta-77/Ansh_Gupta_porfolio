@@ -1,26 +1,137 @@
 @import "tailwindcss";
 
+/* ─── Custom Properties ─── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg:           #050505;
+  --surface:      #0c0c0f;
+  --surface-2:    #111115;
+  --border:       rgba(255,255,255,0.06);
+  --border-hover: rgba(255,255,255,0.12);
+  --text:         #e4e4e7;
+  --text-muted:   rgba(228,228,231,0.45);
+  --text-dim:     rgba(228,228,231,0.22);
+  --purple:       #8B5CF6;
+  --purple-light: #a78bfa;
+  --ease-expo:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft:    cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─── Base ─── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+::selection { background: rgba(139,92,246,0.28); color: #fff; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(139,92,246,0.35); border-radius: 4px; }
+
+/* ─── Grain overlay ─── */
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.022;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ─── Animated gradient text ─── */
+.gradient-text {
+  background: linear-gradient(120deg, #a78bfa 0%, #fff 50%, #a78bfa 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ─── Status pill colors ─── */
+.status-STABLE       { color: #4ade80; }
+.status-IN_DEVELOPMENT { color: #facc15; }
+.status-PLANNED      { color: rgba(228,228,231,0.4); }
+.status-COMPLETE     { color: #60a5fa; }
+.status-TESTING      { color: #fb923c; }
+.status-RESEARCH     { color: #c084fc; }
+.status-PROTOTYPING  { color: #34d399; }
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Lenis smooth scroll ─── */
+html.lenis,
+html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }
+
+/* ─── Utility classes ─── */
+.text-balance { text-wrap: balance; }
+.clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Purple gradient for hero elements */
+.gradient-purple {
+  background: linear-gradient(135deg, #8B5CF6 0%, #06B6D4 100%);
+}
+
+/* Cinematic section spacing */
+.section-padding { padding-top: 7rem; padding-bottom: 7rem; }
+
+/* Glass morphism base */
+.glass {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Video cinematic letterbox bars */
+.letterbox::before,
+.letterbox::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #000;
+  z-index: 2;
+  pointer-events: none;
+}
+.letterbox::before { top: 0; }
+.letterbox::after  { bottom: 0; }
+
+/* ─── Gradient text — cyan → purple → white ─── */
+.gradient-text-cyan {
+  background: linear-gradient(120deg, #06B6D4 0%, #a78bfa 50%, #fff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 8s linear infinite;
 }
