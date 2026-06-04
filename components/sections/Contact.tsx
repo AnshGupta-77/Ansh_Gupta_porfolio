@@ -4,12 +4,13 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
 
 const CHANNELS = [
+  { label: 'Sales',       handle: 'sales@stackbyansh.com',                href: 'mailto:sales@stackbyansh.com',                          color: '#8B5CF6', status: 'PRIMARY' },
   { label: 'Email',       handle: 'ansh.gupta0625@gmail.com',             href: 'mailto:ansh.gupta0625@gmail.com',                       color: '#a78bfa', status: 'OPEN' },
-  { label: 'GitHub',      handle: '@AnshGupta-77',                        href: 'https://github.com/AnshGupta-77',                       color: 'rgba(228,228,231,0.75)', status: 'ACTIVE' },
+  { label: 'WhatsApp',    handle: '+91 62685 79208',                       href: 'https://wa.me/916268579208',                            color: '#25D366', status: 'MESSAGE' },
   { label: 'LinkedIn',    handle: '/in/ansh-gupta-586643347',             href: 'https://www.linkedin.com/in/ansh-gupta-586643347/',     color: '#0077B5', status: 'CONNECT' },
   { label: 'Instagram',   handle: '@stackby_ansh',                        href: 'https://www.instagram.com/stackby_ansh/',               color: '#E1306C', status: 'FOLLOW' },
-  { label: 'WhatsApp',    handle: '+91 62685 79208',                       href: 'https://wa.me/916268579208',                            color: '#25D366', status: 'MESSAGE' },
   { label: 'Telegram',    handle: '@Ansh7728',                            href: 'https://t.me/Ansh7728',                                 color: '#2AABEE', status: 'MESSAGE' },
+  { label: 'GitHub',      handle: '@AnshGupta-77',                        href: 'https://github.com/AnshGupta-77',                       color: 'rgba(228,228,231,0.75)', status: 'ACTIVE' },
   { label: 'Braintrust',  handle: 'Ansh Gupta — Talent Profile',          href: 'https://app.usebraintrust.com/talent/2171441/',         color: '#F5A623', status: 'HIRE' },
 ];
 
@@ -44,16 +45,21 @@ export default function Contact() {
         <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
           style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.75, maxWidth: '520px', marginBottom: '1.5rem' }}>
-          Selectively open to founder collaborations, product engineering engagements, and
-          ecosystem-level thinking partnerships. If you&apos;re building something real and
-          you need someone who can architect it — not just assemble it — reach out.
+          Stack By Ansh is selectively open to founder collaborations, product engineering
+          engagements, and ecosystem-level thinking partnerships. If you&apos;re a startup,
+          founder, or product team who needs a system architect — not just a developer —
+          reach out at{' '}
+          <a href="mailto:sales@stackbyansh.com"
+            style={{ color: '#a78bfa', textDecoration: 'none', fontWeight: 600 }}>
+            sales@stackbyansh.com
+          </a>.
         </motion.p>
 
         {/* Collaboration categories */}
         <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.16 }}
           style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: '2.5rem' }}>
-          {['Product Engineering', 'Realtime Platforms', 'AI Systems', 'Ecosystem Design', 'Founder Collaboration', 'Operational Systems'].map(cat => (
+          {['Startups & Founders', 'Product Engineering', 'AI Systems', 'Realtime Platforms', 'Operational Systems', 'Ecosystem Design', 'Business Automation', 'Studio Collaboration'].map(cat => (
             <span key={cat} style={{
               fontFamily: 'var(--font-space-grotesk)', fontSize: '0.62rem', fontWeight: 600,
               padding: '5px 12px', borderRadius: 100,
@@ -69,10 +75,10 @@ export default function Contact() {
         <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
           style={{ marginBottom: '4rem', display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
-          <Link href="mailto:ansh.gupta0625@gmail.com"
+          <Link href="mailto:sales@stackbyansh.com"
             className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 hover:opacity-90 hover:scale-[1.02]"
             style={{ background: '#8B5CF6', color: '#fff', fontFamily: 'var(--font-space-grotesk)' }}>
-            Start a Conversation <ArrowRight size={15} />
+            Start a Project <ArrowRight size={15} />
           </Link>
           <Link href="/contact"
             className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-semibold text-sm border transition-all duration-300 hover:border-purple-500/40"

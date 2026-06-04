@@ -348,6 +348,35 @@ export default function ProjectTile({ project, index, large = false }: Props) {
         </div>
       )}
 
+      {/* ── Skills Demonstrated ── */}
+      {project.skillsDemonstrated && project.skillsDemonstrated.length > 0 && (
+        <div style={{ marginTop: 4, padding: '10px 14px', borderRadius: 12,
+          background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.05)',
+          display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 8 }}>
+          <span style={{
+            fontFamily: 'var(--font-space-grotesk)', fontSize: '0.58rem', fontWeight: 700,
+            letterSpacing: '0.15em', textTransform: 'uppercase',
+            color: 'rgba(228,228,231,0.25)', flexShrink: 0, whiteSpace: 'nowrap',
+          }}>
+            Skills
+          </span>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
+            {project.skillsDemonstrated.map(skill => (
+              <span key={skill} style={{
+                fontFamily: 'var(--font-space-grotesk)', fontSize: '0.6rem', fontWeight: 600,
+                letterSpacing: '0.04em',
+                color: project.themeColors.text,
+                background: `${project.themeColors.primary}0E`,
+                border: `1px solid ${project.themeColors.primary}20`,
+                borderRadius: 100, padding: '3px 9px',
+              }}>
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
       <style>{`
         @keyframes pulse-dot {
           0%,100% { opacity: 1; }

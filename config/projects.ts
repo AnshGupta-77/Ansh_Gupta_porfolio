@@ -52,6 +52,7 @@ export interface Project {
   hidden?: boolean;            // set true to hide from public listing
   featured?: boolean;          // set true to highlight in featured section
   whatToNotice?: string[];     // 3-4 bullets explaining what's technically impressive
+  skillsDemonstrated?: string[]; // explicit skills this project showcases
 }
 
 export const PROJECTS: Project[] = [
@@ -101,6 +102,7 @@ export const PROJECTS: Project[] = [
       'Execution engine designed around behavioral state machines — not task lists. Tasks have phases, blockers, and dependency resolution.',
       'Redis-backed pub/sub for real-time execution updates without polling.',
     ],
+    skillsDemonstrated: ['AI Orchestration', 'System Architecture', 'Product Thinking', 'Backend Engineering', 'State Machine Design', 'API Architecture'],
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -152,6 +154,7 @@ export const PROJECTS: Project[] = [
       'Redis used as the real-time state broker — active ride data lives in memory, not the database, for sub-50ms read latency.',
       'The UX is designed around the physical constraint of riding — minimal touch interactions, large targets, glanceable status.',
     ],
+    skillsDemonstrated: ['Realtime Systems', 'WebSocket Engineering', 'Database Design', 'UX Engineering', 'Community Architecture', 'Mobile-First Design'],
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -200,6 +203,7 @@ export const PROJECTS: Project[] = [
       'Sanity CMS schema designed for non-technical brand operators — structured fields prevent content decisions that break the visual system.',
       'Checkout flow engineered for zero friction — Stripe integration with optimistic UI that reduces perceived wait time.',
     ],
+    skillsDemonstrated: ['Frontend Engineering', 'Motion Design', 'UX Engineering', 'Brand Systems', 'Ecommerce Architecture', 'CMS Design'],
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -248,6 +252,7 @@ export const PROJECTS: Project[] = [
       'Prompt engineering designed around structured extraction — raw ideas are parsed into typed schemas before any reasoning occurs.',
       'The workspace concept itself is the differentiator — this is a co-architect, not a chat interface wrapped in a nicer UI.',
     ],
+    skillsDemonstrated: ['AI Workflows', 'LLM Orchestration', 'Product Thinking', 'Frontend Engineering', 'Prompt Engineering', 'System Design'],
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -296,6 +301,7 @@ export const PROJECTS: Project[] = [
       'Dealer network architecture supports multi-tenant data isolation — each dealer sees their inventory and pricing without cross-contamination.',
       'B2B inquiry workflow designed around real procurement behavior — quote requests, not add-to-cart buttons.',
     ],
+    skillsDemonstrated: ['Full Stack Engineering', 'B2B Product Design', 'Database Design', 'Backend Architecture', 'Operational Systems', 'Domain Modeling'],
   },
 
   // ─────────────────────────────────────────────────────────────────

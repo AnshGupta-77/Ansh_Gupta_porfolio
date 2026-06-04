@@ -8,10 +8,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 
 const NAV_ITEMS = [
-  { label: 'Worlds',  href: '#worlds'  },
-  { label: 'About',   href: '#about'   },
-  { label: 'Stack',   href: '#stack'   },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Worlds',   href: '#worlds'   },
+  { label: 'About',    href: '#about'    },
+  { label: 'Expertise', href: '#skills'  },
+  { label: 'Contact',  href: '#contact'  },
 ];
 
 export default function Navbar() {
@@ -68,14 +68,14 @@ export default function Navbar() {
           <span
             style={{
               fontFamily: 'var(--font-space-grotesk)',
-              fontSize: '0.9rem',
+              fontSize: '0.78rem',
               fontWeight: 800,
-              letterSpacing: '0.22em',
+              letterSpacing: '0.16em',
               textTransform: 'uppercase',
               color: '#fff',
             }}
           >
-            ANSH
+            STACK BY ANSH
           </span>
         </Link>
 

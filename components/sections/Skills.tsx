@@ -72,15 +72,16 @@ export default function Skills() {
           style={{ marginBottom: 56, display: 'flex', flexDirection: 'column', gap: 14 }}>
           <span style={{ fontSize: '0.65rem', fontFamily: 'var(--font-space-grotesk)', fontWeight: 700,
             color: '#a78bfa', letterSpacing: '0.25em', textTransform: 'uppercase' }}>
-            TECHNOLOGY STACK
+            ENGINEERING EXPERTISE
           </span>
           <h2 style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', fontFamily: 'var(--font-space-grotesk)',
             fontWeight: 900, letterSpacing: '-0.04em', color: '#ffffff', lineHeight: 1.05, margin: 0 }}>
-            The systems I build with.
+            The engineering<br />ecosystem.
           </h2>
           <p style={{ color: 'rgba(228,228,231,0.4)', fontSize: '0.9rem', fontFamily: 'var(--font-space-grotesk)',
             margin: 0, maxWidth: 460, lineHeight: 1.7 }}>
-            Not buzzwords. The actual infrastructure behind every product.
+            Not buzzwords. The actual infrastructure behind every product — and the
+            reasoning behind why each technology was chosen.
           </p>
         </motion.div>
       </div>
