@@ -48,30 +48,6 @@ const REVIEWS: Review[] = [
     color:   '#4ADE80',
     initials: 'SS',
   },
-  {
-    name:    'Rahul M.',
-    role:    'Technical Lead',
-    quote:   'The architecture Ansh proposed handled edge cases we hadn\'t even considered in our initial planning. He documented failure states, designed for scale, and delivered clean, readable code. The kind of engineer you bring in when you need something built properly.',
-    tags:    ['Architecture', 'Code Quality', 'Reliability'],
-    color:   '#06B6D4',
-    initials: 'RM',
-  },
-  {
-    name:    'Priya K.',
-    role:    'Product Manager',
-    quote:   'Clear communication, disciplined execution, and a product mindset that goes well beyond the technical requirements. Ansh asks the right questions before touching the keyboard. Rare quality in a technical collaborator.',
-    tags:    ['Communication', 'Product Mindset', 'Professionalism'],
-    color:   '#FB923C',
-    initials: 'PK',
-  },
-  {
-    name:    'Arjun V.',
-    role:    'Startup Founder',
-    quote:   'The interface quality was stunning — but what really stood out was how he structured the backend logic underneath it. Every decision felt intentional. He builds the kind of software that doesn\'t fall apart when real users start using it.',
-    tags:    ['Full Stack', 'Intentional Design', 'Quality'],
-    color:   '#A78BFA',
-    initials: 'AV',
-  },
 ];
 
 export default function Testimonials() {
@@ -115,7 +91,7 @@ export default function Testimonials() {
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: 16,
+            gap: 20,
           }}
           className="testimonials-grid"
         >

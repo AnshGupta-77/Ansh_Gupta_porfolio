@@ -197,6 +197,15 @@ export default function VideoIntro({ onComplete }: { onComplete: () => void }) {
     setTimeout(() => { audioRef.current?.pause(); onComplete(); }, 1050);
   }, [onComplete]);
 
+  // ── Skip before entering — bypasses intro entirely ───────────────────────
+  const handleSkipGate = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation(); // don't fire parent's handleEnter
+    if (completedRef.current) return;
+    completedRef.current = true;
+    try { sessionStorage.setItem('intro-seen', '1'); } catch { /* ignore */ }
+    onComplete();
+  }, [onComplete]);
+
   // ── Enter gate click ─────────────────────────────────────────────────────
   const handleEnter = useCallback(() => {
     if (entered) return;
@@ -376,6 +385,24 @@ export default function VideoIntro({ onComplete }: { onComplete: () => void }) {
                 </span>
               </motion.div>
             </motion.div>
+
+            {/* Skip intro — always visible on the gate */}
+            <button
+              onClick={handleSkipGate}
+              style={{
+                position: 'absolute', bottom: 36, right: 36,
+                background: 'transparent', border: 'none', cursor: 'pointer',
+                fontFamily: 'var(--font-space-grotesk)', fontSize: '0.62rem',
+                fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.2)',
+                padding: '8px 0',
+                transition: 'color 0.2s ease',
+              }}
+              onMouseEnter={e => ((e.currentTarget as HTMLButtonElement).style.color = 'rgba(255,255,255,0.55)')}
+              onMouseLeave={e => ((e.currentTarget as HTMLButtonElement).style.color = 'rgba(255,255,255,0.2)')}
+            >
+              Skip intro →
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

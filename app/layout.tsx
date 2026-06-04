@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
 import { Inter, Space_Grotesk } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import CursorGlow from '@/components/ui/CursorGlow';
 import SmoothScrollProvider from '@/components/ui/SmoothScrollProvider';
+
+const GA_ID = 'G-7G3WC9R36Q';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -223,6 +226,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="grain min-h-screen" style={{ background: 'var(--bg)', color: 'var(--text)' }}>
+        {/* Google Analytics 4 */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}', { page_path: window.location.pathname });
+          `}
+        </Script>
+
         <SmoothScrollProvider>
           <CursorGlow />
           <Navbar />

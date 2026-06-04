@@ -5,23 +5,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ASymbol from '@/components/ui/ASymbol';
 
 const CHANNELS = [
+  { label: 'Sales',      handle: 'sales@stackbyansh.com',            href: 'mailto:sales@stackbyansh.com',                         color: '#8B5CF6', status: 'PRIMARY' },
   { label: 'Email',      handle: 'ansh.gupta0625@gmail.com',         href: 'mailto:ansh.gupta0625@gmail.com',                      color: '#a78bfa', status: 'OPEN'    },
-  { label: 'GitHub',     handle: '@AnshGupta-77',                   href: 'https://github.com/AnshGupta-77',                      color: '#e4e4e7', status: 'ACTIVE'  },
+  { label: 'WhatsApp',   handle: '+91 62685 79208',                  href: 'https://wa.me/916268579208',                           color: '#25D366', status: 'MESSAGE' },
   { label: 'LinkedIn',   handle: '/in/ansh-gupta-586643347',        href: 'https://www.linkedin.com/in/ansh-gupta-586643347/',    color: '#0077B5', status: 'CONNECT' },
   { label: 'Instagram',  handle: '@stackby_ansh',                   href: 'https://www.instagram.com/stackby_ansh/',              color: '#E1306C', status: 'FOLLOW'  },
-  { label: 'WhatsApp',   handle: '+91 62685 79208',                  href: 'https://wa.me/916268579208',                           color: '#25D366', status: 'MESSAGE' },
   { label: 'Telegram',   handle: '@Ansh7728',                       href: 'https://t.me/Ansh7728',                                color: '#2AABEE', status: 'MESSAGE' },
+  { label: 'GitHub',     handle: '@AnshGupta-77',                   href: 'https://github.com/AnshGupta-77',                      color: '#e4e4e7', status: 'ACTIVE'  },
   { label: 'Braintrust', handle: 'Ansh Gupta — Talent Profile',     href: 'https://app.usebraintrust.com/talent/2171441/',        color: '#F5A623', status: 'HIRE'    },
 ];
 
 const BOOT_LINES = [
-  { text: '> INITIALIZING SECURE CHANNEL...', color: '#4ade80' },
-  { text: '✓ Identity verified: Ansh Gupta',  color: '#4ade80' },
-  { text: '✓ Systems status: ACTIVE',         color: '#4ade80' },
-  { text: '> SELECT COMMUNICATION PROTOCOL:', color: 'rgba(228,228,231,0.6)' },
+  { text: '> INITIALIZING STACK BY ANSH COMMS...', color: '#4ade80' },
+  { text: '✓ Studio verified: Stack By Ansh',       color: '#4ade80' },
+  { text: '✓ Systems status: ACTIVE',               color: '#4ade80' },
+  { text: '> SELECT COMMUNICATION PROTOCOL:',       color: 'rgba(228,228,231,0.6)' },
 ];
 
-const AVAILABILITY = ['Technical Consulting', 'Product Collaboration', 'System Architecture'];
+const AVAILABILITY = ['Startup Projects', 'Founder Collaborations', 'Product Engineering', 'AI System Builds', 'System Architecture'];
 
 export default function ContactPage() {
   const [visibleLines, setVisibleLines] = useState(0);
@@ -103,9 +104,13 @@ export default function ContactPage() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-          style={{ color: 'var(--text-muted)', fontSize: '0.9rem', maxWidth: '420px' }}
+          style={{ color: 'var(--text-muted)', fontSize: '0.9rem', maxWidth: '480px', lineHeight: 1.7 }}
         >
-          Direct line to the systems builder. Select your channel.
+          Direct line to Stack By Ansh. For project enquiries use{' '}
+          <a href="mailto:sales@stackbyansh.com" style={{ color: '#a78bfa', textDecoration: 'none', fontWeight: 600 }}>
+            sales@stackbyansh.com
+          </a>
+          . Select your channel below.
         </motion.p>
       </div>
 
