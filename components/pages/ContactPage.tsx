@@ -6,7 +6,7 @@ import ASymbol from '@/components/ui/ASymbol';
 
 const CHANNELS = [
   { label: 'Sales',      handle: 'sales@stackbyansh.com',            href: 'mailto:sales@stackbyansh.com',                         color: '#8B5CF6', status: 'PRIMARY' },
-  { label: 'Email',      handle: 'ansh.gupta0625@gmail.com',         href: 'mailto:ansh.gupta0625@gmail.com',                      color: '#a78bfa', status: 'OPEN'    },
+  { label: 'Email',      handle: 'ceo@stackbyansh.com',              href: 'mailto:ceo@stackbyansh.com',                           color: '#a78bfa', status: 'OPEN'    },
   { label: 'WhatsApp',   handle: '+91 62685 79208',                  href: 'https://wa.me/916268579208',                           color: '#25D366', status: 'MESSAGE' },
   { label: 'LinkedIn',   handle: '/in/ansh-gupta-586643347',        href: 'https://www.linkedin.com/in/ansh-gupta-586643347/',    color: '#0077B5', status: 'CONNECT' },
   { label: 'Instagram',  handle: '@stackby_ansh',                   href: 'https://www.instagram.com/stackby_ansh/',              color: '#E1306C', status: 'FOLLOW'  },
