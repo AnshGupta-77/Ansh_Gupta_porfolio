@@ -5,6 +5,7 @@ import { getProject, getPublicProjects } from '@/config/projects';
 import SystemStatus from '@/components/project/SystemStatus';
 import BuildLog from '@/components/project/BuildLog';
 import TechModules from '@/components/project/TechModules';
+import ProjectGallery from '@/components/project/ProjectGallery';
 
 export async function generateStaticParams() {
   return getPublicProjects().map(p => ({ slug: p.slug }));
@@ -119,47 +120,44 @@ function OozeEditorial({ color }: { color: string }) {
 }
 
 function BikeTribeStats({ color }: { color: string }) {
-  const stats = [
-    { value: '10K+', label: 'Riders' },
-    { value: '500+', label: 'Routes' },
-    { value: '50+', label: 'Events' },
+  // No fabricated metrics — the product is pre-launch. Show honest capability
+  // highlights instead of invented rider/route/event counts.
+  const capabilities = [
+    { title: 'Real-Time Coordination', detail: 'WebSocket-backed live ride state, not WhatsApp threads.' },
+    { title: 'Group Formation', detail: 'Spin up a ride, invite riders, keep everyone in sync.' },
+    { title: 'Route Intelligence', detail: 'Shared routes and live tracking built for touring.' },
   ];
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
-      {stats.map(stat => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      {capabilities.map(cap => (
         <div
-          key={stat.label}
+          key={cap.title}
           style={{
-            background: `linear-gradient(135deg, ${color}18, ${color}08)`,
-            border: `1px solid ${color}30`,
-            borderRadius: '16px',
-            padding: '20px 16px',
-            textAlign: 'center',
+            background: `linear-gradient(135deg, ${color}14, ${color}06)`,
+            border: `1px solid ${color}26`,
+            borderRadius: '14px',
+            padding: '16px 18px',
           }}
         >
           <div
             style={{
               fontFamily: 'var(--font-space-grotesk)',
-              fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
-              fontWeight: 900,
+              fontSize: '0.95rem',
+              fontWeight: 800,
               color: color,
-              lineHeight: 1,
-              marginBottom: '6px',
+              marginBottom: '4px',
             }}
           >
-            {stat.value}
+            {cap.title}
           </div>
           <div
             style={{
-              fontSize: '0.65rem',
-              fontWeight: 700,
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-              color: 'rgba(228,228,231,0.5)',
-              fontFamily: 'var(--font-space-grotesk)',
+              fontSize: '0.82rem',
+              lineHeight: 1.55,
+              color: 'rgba(228,228,231,0.6)',
             }}
           >
-            {stat.label}
+            {cap.detail}
           </div>
         </div>
       ))}
@@ -320,7 +318,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       {/* ── BACK NAVIGATION (fixed) ── */}
       <div className="fixed top-0 left-0 right-0 z-50 flex items-center px-6 py-4 pointer-events-none">
         <Link
-          href="/#build-worlds"
+          href="/#worlds"
           className="pointer-events-auto inline-flex items-center gap-2 px-4 py-2 rounded-xl border text-sm font-semibold transition-all duration-300"
           style={{
             background: 'rgba(5,5,5,0.85)',
@@ -524,13 +522,38 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               </div>
             )}
 
+            {/* b2) WHAT TO NOTICE — "look at how I think" */}
+            {project.whatToNotice && project.whatToNotice.length > 0 && (
+              <div>
+                <SectionLabel text="WHAT TO NOTICE" color={themeColors.text} />
+                <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  {project.whatToNotice.map((n, i) => (
+                    <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                      <span
+                        style={{
+                          flexShrink: 0, marginTop: '2px', width: '18px', height: '18px', borderRadius: '6px',
+                          background: `${themeColors.primary}1a`, border: `1px solid ${themeColors.primary}40`,
+                          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                        }}
+                      >
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke={themeColors.text} strokeWidth="2.6">
+                          <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                      </span>
+                      <span style={{ fontSize: '0.95rem', color: 'rgba(228,228,231,0.78)', lineHeight: 1.6, fontWeight: 500 }}>{n}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {/* c) Per-project specialty block */}
             <div>
               <SectionLabel
                 text={
                   slug === 'operonix' ? 'EXECUTION ENGINE' :
                   slug === 'ooze' ? 'THE VISION' :
-                  slug === 'biketribe' ? 'COMMUNITY STATS' :
+                  slug === 'biketribe' ? 'WHAT IT DOES' :
                   slug === 'architect-ai' ? 'THE WORKFLOW' :
                   slug === 'seva-agro' ? 'BUILD QUALITY' :
                   'SIGNATURE'
@@ -540,29 +563,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               <ProjectSpecialBlock slug={slug} color={themeColors.primary} />
             </div>
 
-            {/* d) Screenshots gallery */}
+            {/* d) Rotating visual showcase */}
             {project.screenshots && project.screenshots.length > 0 && (
               <div>
                 <SectionLabel text="VISUAL SHOWCASE" color={themeColors.text} />
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {project.screenshots.map((src, i) => (
-                    <div
-                      key={i}
-                      className="relative rounded-xl overflow-hidden border"
-                      style={{
-                        aspectRatio: '16/9',
-                        borderColor: `${themeColors.primary}15`,
-                      }}
-                    >
-                      <Image
-                        src={src}
-                        alt={`${project.name} screenshot ${i + 1}`}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
+                <ProjectGallery
+                  images={project.screenshots}
+                  name={project.name}
+                  primaryColor={themeColors.primary}
+                  glow={themeColors.glow}
+                />
               </div>
             )}
 
@@ -593,6 +603,28 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     </li>
                   ))}
                 </ul>
+              </div>
+            )}
+
+            {/* f2) SKILLS DEMONSTRATED */}
+            {project.skillsDemonstrated && project.skillsDemonstrated.length > 0 && (
+              <div>
+                <SectionLabel text="SKILLS DEMONSTRATED" color={themeColors.text} />
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                  {project.skillsDemonstrated.map((s, i) => (
+                    <span
+                      key={i}
+                      style={{
+                        padding: '6px 14px', borderRadius: '999px',
+                        border: `1px solid ${themeColors.primary}30`, background: `${themeColors.primary}10`,
+                        color: themeColors.text, fontFamily: 'var(--font-space-grotesk)',
+                        fontSize: '0.78rem', fontWeight: 600, letterSpacing: '0.02em',
+                      }}
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
               </div>
             )}
 

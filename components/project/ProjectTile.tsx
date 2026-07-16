@@ -2,7 +2,7 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'framer-motion';
+import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import type { Project } from '@/config/projects';
 
 const STATUS_COLORS: Record<string, string> = {
@@ -23,8 +23,7 @@ interface Props {
 
 export default function ProjectTile({ project, index, large = false }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const [hovered,     setHovered]     = useState(false);
-  const [showNotice,  setShowNotice]  = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   /* Mouse-reactive tilt */
   const mouseX = useMotionValue(0);
@@ -272,110 +271,6 @@ export default function ProjectTile({ project, index, large = false }: Props) {
           />
         </motion.div>
       </Link>
-
-      {/* ── What to Notice — expandable panel below the card ── */}
-      {project.whatToNotice && project.whatToNotice.length > 0 && (
-        <div style={{ marginTop: 4 }}>
-          <button
-            onClick={e => { e.preventDefault(); e.stopPropagation(); setShowNotice(s => !s); }}
-            style={{
-              width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              padding: '10px 16px',
-              background: showNotice ? `${project.themeColors.primary}10` : 'rgba(255,255,255,0.02)',
-              border: `1px solid ${showNotice ? `${project.themeColors.primary}25` : 'rgba(255,255,255,0.05)'}`,
-              borderRadius: showNotice ? '0 0 12px 12px' : '12px',
-              cursor: 'pointer',
-              transition: 'background 0.25s ease, border-color 0.25s ease',
-            }}
-          >
-            <span style={{
-              fontFamily: 'var(--font-space-grotesk)', fontSize: '0.65rem', fontWeight: 700,
-              letterSpacing: '0.14em', textTransform: 'uppercase',
-              color: showNotice ? project.themeColors.text : 'rgba(228,228,231,0.3)',
-              transition: 'color 0.25s ease',
-            }}>
-              What to Notice
-            </span>
-            <motion.span
-              animate={{ rotate: showNotice ? 180 : 0 }}
-              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              style={{ color: project.themeColors.text, opacity: showNotice ? 1 : 0.35 }}
-            >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="m6 9 6 6 6-6"/>
-              </svg>
-            </motion.span>
-          </button>
-
-          <AnimatePresence>
-            {showNotice && (
-              <motion.div
-                key="notice-panel"
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                style={{ overflow: 'hidden' }}
-              >
-                <div style={{
-                  padding: '14px 16px 16px',
-                  background: `${project.themeColors.primary}08`,
-                  border: `1px solid ${project.themeColors.primary}20`,
-                  borderTop: 'none',
-                  borderRadius: '0 0 12px 12px',
-                  display: 'flex', flexDirection: 'column', gap: 10,
-                }}>
-                  {project.whatToNotice!.map((item, i) => (
-                    <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-                      <span style={{
-                        flexShrink: 0, width: 5, height: 5, borderRadius: '50%',
-                        background: project.themeColors.primary,
-                        boxShadow: `0 0 5px ${project.themeColors.primary}60`,
-                        marginTop: 6, display: 'inline-block',
-                      }} />
-                      <p style={{
-                        fontFamily: 'var(--font-space-grotesk)', fontSize: '0.76rem',
-                        color: 'rgba(228,228,231,0.55)', lineHeight: 1.65, margin: 0,
-                      }}>
-                        {item}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      )}
-
-      {/* ── Skills Demonstrated ── */}
-      {project.skillsDemonstrated && project.skillsDemonstrated.length > 0 && (
-        <div style={{ marginTop: 4, padding: '10px 14px', borderRadius: 12,
-          background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.05)',
-          display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 8 }}>
-          <span style={{
-            fontFamily: 'var(--font-space-grotesk)', fontSize: '0.58rem', fontWeight: 700,
-            letterSpacing: '0.15em', textTransform: 'uppercase',
-            color: 'rgba(228,228,231,0.25)', flexShrink: 0, whiteSpace: 'nowrap',
-          }}>
-            Skills
-          </span>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
-            {project.skillsDemonstrated.map(skill => (
-              <span key={skill} style={{
-                fontFamily: 'var(--font-space-grotesk)', fontSize: '0.6rem', fontWeight: 600,
-                letterSpacing: '0.04em',
-                color: project.themeColors.text,
-                background: `${project.themeColors.primary}0E`,
-                border: `1px solid ${project.themeColors.primary}20`,
-                borderRadius: 100, padding: '3px 9px',
-              }}>
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
 
       <style>{`
         @keyframes pulse-dot {

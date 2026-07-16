@@ -47,11 +47,12 @@ export default function Identity() {
               }}
             >
               <Image
-                src="/images/hero/face.png"
+                src="/images/hero/Ansh.png"
                 alt="Ansh Gupta"
                 fill
-                className="object-cover object-center"
-                style={{ filter: 'contrast(1.05) saturate(0.9) brightness(1.02)' }}
+                sizes="(max-width: 768px) 90vw, 520px"
+                className="object-cover"
+                style={{ objectPosition: '50% 22%', filter: 'contrast(1.03) saturate(0.95) brightness(1.02)' }}
               />
               {/* Bottom gradient */}
               <div className="absolute inset-0 pointer-events-none"

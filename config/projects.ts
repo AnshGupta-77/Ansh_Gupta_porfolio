@@ -49,10 +49,10 @@ export interface Project {
   buildLog: BuildLogEntry[];
   builtFeatures: string[];
   plannedFeatures: string[];
+  whatToNotice?: string[];        // "Look at how I think" — architecture/decisions to notice
+  skillsDemonstrated?: string[];  // capabilities this project demonstrates
   hidden?: boolean;            // set true to hide from public listing
   featured?: boolean;          // set true to highlight in featured section
-  whatToNotice?: string[];     // 3-4 bullets explaining what's technically impressive
-  skillsDemonstrated?: string[]; // explicit skills this project showcases
 }
 
 export const PROJECTS: Project[] = [
@@ -96,13 +96,8 @@ export const PROJECTS: Project[] = [
     ],
     builtFeatures: ['Project scaffolding', 'API infrastructure', 'Auth system'],
     plannedFeatures: ['AI context engine', 'Decision logging', 'Multi-agent routing', 'Dashboard UI'],
-    whatToNotice: [
-      'Multi-agent routing architecture — different task types are dispatched to specialized agents, not a single general-purpose LLM call.',
-      'Context persistence layer designed to survive session boundaries — the system remembers decisions across days, not just conversations.',
-      'Execution engine designed around behavioral state machines — not task lists. Tasks have phases, blockers, and dependency resolution.',
-      'Redis-backed pub/sub for real-time execution updates without polling.',
-    ],
-    skillsDemonstrated: ['AI Orchestration', 'System Architecture', 'Product Thinking', 'Backend Engineering', 'State Machine Design', 'API Architecture'],
+    whatToNotice: ['Behavioral system architecture', 'AI workflow design', 'Operational continuity engine', 'Local-first thinking', 'State-driven UX'],
+    skillsDemonstrated: ['Product Architecture', 'FastAPI', 'PostgreSQL', 'AI Integration', 'System Design', 'UX Strategy'],
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -148,13 +143,8 @@ export const PROJECTS: Project[] = [
     ],
     builtFeatures: ['Ride creation & management', 'User auth', 'WebSocket infrastructure', 'Route display'],
     plannedFeatures: ['Live GPS tracking', 'Group chat', 'Mobile app', 'Community profiles', 'Route intelligence'],
-    whatToNotice: [
-      'WebSocket infrastructure designed for concurrent group sessions — multiple riders sharing live position data on the same channel.',
-      'PostgreSQL schema designed for geo-spatial queries using PostGIS extension — route proximity and membership intersection handled at the DB level.',
-      'Redis used as the real-time state broker — active ride data lives in memory, not the database, for sub-50ms read latency.',
-      'The UX is designed around the physical constraint of riding — minimal touch interactions, large targets, glanceable status.',
-    ],
-    skillsDemonstrated: ['Realtime Systems', 'WebSocket Engineering', 'Database Design', 'UX Engineering', 'Community Architecture', 'Mobile-First Design'],
+    whatToNotice: ['Realtime architecture', 'Community ecosystem design', 'WebSocket infrastructure', 'Mobile-first engineering'],
+    skillsDemonstrated: ['React Native', 'FastAPI', 'Realtime Systems', 'Product Thinking', 'Database Design'],
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -197,13 +187,8 @@ export const PROJECTS: Project[] = [
     ],
     builtFeatures: ['Full storefront', 'Product catalog', 'Checkout', 'Brand system'],
     plannedFeatures: ['Digital lookbook', 'AR product preview', 'Community layer'],
-    whatToNotice: [
-      'The storefront is the product — every visual element communicates brand identity, not just containers for SKUs.',
-      'Framer Motion animation system built with a coherent motion language — each transition follows consistent physics, not random easing.',
-      'Sanity CMS schema designed for non-technical brand operators — structured fields prevent content decisions that break the visual system.',
-      'Checkout flow engineered for zero friction — Stripe integration with optimistic UI that reduces perceived wait time.',
-    ],
-    skillsDemonstrated: ['Frontend Engineering', 'Motion Design', 'UX Engineering', 'Brand Systems', 'Ecommerce Architecture', 'CMS Design'],
+    whatToNotice: ['Cinematic commerce UX', 'Brand-as-product thinking', 'Motion-driven storytelling', 'Conversion-focused storefront'],
+    skillsDemonstrated: ['Next.js', 'Framer Motion', 'Stripe', 'Sanity CMS', 'Design Systems', 'Brand Strategy'],
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -246,13 +231,8 @@ export const PROJECTS: Project[] = [
     ],
     builtFeatures: ['Concept validation', 'Architecture prototype'],
     plannedFeatures: ['Idea parsing engine', 'System diagram generator', 'Execution blueprint export', 'Team collaboration'],
-    whatToNotice: [
-      'LangChain agent graph architecture — idea processing happens in stages with state passing between specialized reasoning nodes.',
-      'React Flow used for interactive architecture diagram generation — AI output renders as a live, editable system diagram, not just text.',
-      'Prompt engineering designed around structured extraction — raw ideas are parsed into typed schemas before any reasoning occurs.',
-      'The workspace concept itself is the differentiator — this is a co-architect, not a chat interface wrapped in a nicer UI.',
-    ],
-    skillsDemonstrated: ['AI Workflows', 'LLM Orchestration', 'Product Thinking', 'Frontend Engineering', 'Prompt Engineering', 'System Design'],
+    whatToNotice: ['Idea-to-architecture workflow', 'AI orchestration design', 'Visual system mapping', 'Decision-framework modeling'],
+    skillsDemonstrated: ['Next.js', 'FastAPI', 'LangChain', 'React Flow', 'AI Integration', 'System Design'],
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -295,13 +275,8 @@ export const PROJECTS: Project[] = [
     ],
     builtFeatures: ['Project architecture', 'Backend API foundation', 'Frontend scaffold'],
     plannedFeatures: ['Product catalog', 'Machinery specs system', 'Dealer portal', 'Inquiry system'],
-    whatToNotice: [
-      'Django + Next.js 15 stack chosen deliberately — Django handles complex data modeling and admin, Next.js owns the customer-facing experience.',
-      'Data model designed for agricultural machinery specs — hierarchical product categories with variant attributes, not a generic e-commerce schema.',
-      'Dealer network architecture supports multi-tenant data isolation — each dealer sees their inventory and pricing without cross-contamination.',
-      'B2B inquiry workflow designed around real procurement behavior — quote requests, not add-to-cart buttons.',
-    ],
-    skillsDemonstrated: ['Full Stack Engineering', 'B2B Product Design', 'Database Design', 'Backend Architecture', 'Operational Systems', 'Domain Modeling'],
+    whatToNotice: ['Production-grade architecture', 'Industrial B2B catalog modeling', 'SEO-first structure', 'Dealer-network design'],
+    skillsDemonstrated: ['Next.js 15', 'Django', 'PostgreSQL', 'TypeScript', 'System Architecture'],
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -346,6 +321,8 @@ export const PROJECTS: Project[] = [
     ],
     builtFeatures: ['Client dashboard', 'Income tracking', 'Deadline management', 'Basic Stripe integration'],
     plannedFeatures: ['AI proposal writer', 'Client acquisition automation', 'Revenue forecasting', 'Contract management'],
+    whatToNotice: ['Operations-system thinking', 'Payments integration', 'AI-assisted workflows', 'Client lifecycle modeling'],
+    skillsDemonstrated: ['React', 'FastAPI', 'PostgreSQL', 'Stripe', 'TypeScript', 'Product Design'],
   },
 
   // ─────────────────────────────────────────────────────────────────
@@ -387,6 +364,8 @@ export const PROJECTS: Project[] = [
     ],
     builtFeatures: ['Data preprocessing pipeline', 'Multi-model training', 'Performance comparison', 'Visualization dashboard', 'Prediction API'],
     plannedFeatures: ['Clinical validation study', 'Web interface', 'Model explainability layer'],
+    whatToNotice: ['ML pipeline design', 'Multi-model comparison', 'Healthcare data handling', 'Explainability focus'],
+    skillsDemonstrated: ['Python', 'Scikit-learn', 'Pandas', 'Data Modeling', 'ML Evaluation'],
   },
 ];
 

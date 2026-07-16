@@ -1,105 +1,64 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import LoadingScreen       from '@/components/ui/LoadingScreen';
-import VideoIntro          from '@/components/ui/VideoIntro';
-import Hero                from '@/components/sections/Hero';
-import WorldsSection       from '@/components/sections/WorldsSection';
-import IdeationProjects    from '@/components/sections/IdeationProjects';
-import SystemsEngineering  from '@/components/sections/SystemsEngineering';
-import About               from '@/components/sections/About';
-import Process             from '@/components/sections/Process';
-import Skills              from '@/components/sections/Skills';
-import PreDeliveryChecklist from '@/components/sections/PreDeliveryChecklist';
-import Education           from '@/components/sections/Education';
-import Philosophy          from '@/components/sections/Philosophy';
-import Testimonials        from '@/components/sections/Testimonials';
-import FeedbackWall        from '@/components/sections/FeedbackWall';
-import Contact             from '@/components/sections/Contact';
-
-type Phase = 'loading' | 'video' | 'main';
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import PortfolioIntro from '@/components/ui/PortfolioIntro';
+import Hero from '@/components/sections/Hero';
+import Identity from '@/components/sections/Identity';
+import EcosystemStrip from '@/components/sections/EcosystemStrip';
+import WorldsSection from '@/components/sections/WorldsSection';
+import About from '@/components/sections/About';
+import Skills from '@/components/sections/Skills';
+import Philosophy from '@/components/sections/Philosophy';
+import Approach from '@/components/sections/Approach';
+import Standards from '@/components/sections/Standards';
+import Journey from '@/components/sections/Journey';
+import Available from '@/components/sections/Available';
+import Contact from '@/components/sections/Contact';
 
 export default function HomeExperience() {
-  const [phase, setPhase] = useState<Phase>('loading');
+  const [introDone, setIntroDone] = useState(false);
 
-  // ── Skip intro on browser back (if already seen this session) ─────────────
+  // Honor any #hash once the intro has cleared (return from a project page).
   useEffect(() => {
-    try {
-      if (sessionStorage.getItem('intro-seen')) {
-        setPhase('main');
-      }
-    } catch { /* sessionStorage may be blocked in some environments */ }
-  }, []);
-
-  const handleVideoComplete = () => {
-    try { sessionStorage.setItem('intro-seen', '1'); } catch { /* ignore */ }
-    setPhase('main');
-  };
+    if (!introDone) return;
+    const hash = window.location.hash;
+    if (!hash) return;
+    const id = hash.slice(1);
+    const scroll = () => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const lenis = (window as unknown as { __lenis?: { scrollTo: (t: HTMLElement, o?: object) => void } }).__lenis;
+      if (lenis) lenis.scrollTo(el, { immediate: true });
+      else el.scrollIntoView({ behavior: 'auto', block: 'start' });
+    };
+    const raf = requestAnimationFrame(() => requestAnimationFrame(scroll));
+    return () => cancelAnimationFrame(raf);
+  }, [introDone]);
 
   return (
-    <AnimatePresence mode="wait">
-      {phase === 'loading' && (
-        <motion.div
-          key="loading"
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <LoadingScreen onComplete={() => setPhase('video')} />
-        </motion.div>
-      )}
-
-      {phase === 'video' && (
-        <motion.div
-          key="video"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <VideoIntro onComplete={handleVideoComplete} />
-        </motion.div>
-      )}
-
-      {phase === 'main' && (
-        <motion.main
-          key="main"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          {/*
-           * Emotional flow:
-           * 1. Human Introduction       → Hero (greeting + headline + portrait)
-           * 2. Featured Projects        → WorldsSection (deep project case studies)
-           * 3. Ideation Concepts        → IdeationProjects (3 concept cards)
-           * 4. Architecture Depth       → SystemsEngineering (how systems are built)
-           * 5. Founder Story            → About (who, why, mindset)
-           * 6. Engineering Methodology  → Process (9-stage workflow)
-           * 7. Technical Capability     → Skills (tech stack + reasoning)
-           * 8. Delivery Standard        → PreDeliveryChecklist (quality gates)
-           * 9. Learning & Growth        → Education (background + self-directed)
-           * 10. Engineering Philosophy  → Philosophy (5 principles)
-           * 11. Trust Layer             → Testimonials (named reviews)
-           * 12. Open Feedback           → FeedbackWall (public submissions)
-           * 13. Collaboration & Contact → Contact (founder-oriented)
-           */}
-          <Hero />
-          <WorldsSection />
-          <IdeationProjects />
-          <SystemsEngineering />
-          <About />
-          <Process />
-          <Skills />
-          <PreDeliveryChecklist />
-          <Education />
-          <Philosophy />
-          <Testimonials />
-          <FeedbackWall />
-          <Contact />
-        </motion.main>
-      )}
-    </AnimatePresence>
+    <>
+      {/* Main content is always mounted underneath — the intro is a fixed
+          overlay on top of it, so there's no blank flash once it fades. */}
+      <PortfolioIntro onComplete={() => setIntroDone(true)} />
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
+        <Hero />
+        <Identity />
+        <About />
+        <Philosophy />
+        <WorldsSection />
+        <EcosystemStrip />
+        <Approach />
+        <Skills />
+        <Standards />
+        <Journey />
+        <Available />
+        <Contact />
+      </motion.main>
+    </>
   );
 }

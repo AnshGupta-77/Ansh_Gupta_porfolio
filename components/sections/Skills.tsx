@@ -10,45 +10,15 @@ const fadeUp: any = {
   }),
 };
 
-interface Cluster { name: string; color: string; pills: string[]; why: string; }
+interface Cluster { name: string; color: string; pills: string[]; }
 
 const clusters: Cluster[] = [
-  {
-    name:  'FRONTEND SYSTEMS',
-    color: '#8B5CF6',
-    pills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'GSAP'],
-    why:   'Next.js for SSR + edge-ready deployment. TypeScript for correctness at build time, not runtime surprises. Framer Motion for animation that communicates state rather than just decoration.',
-  },
-  {
-    name:  'BACKEND INFRASTRUCTURE',
-    color: '#06B6D4',
-    pills: ['FastAPI', 'Django', 'Python', 'REST APIs', 'WebSockets', 'Node.js'],
-    why:   'FastAPI for async Python with auto-generated docs and type validation. WebSockets for real-time layers without polling overhead. Python as the universal language bridging AI, automation, and backend logic.',
-  },
-  {
-    name:  'AI SYSTEMS',
-    color: '#A78BFA',
-    pills: ['LangChain', 'OpenAI API', 'Agents', 'RAG Pipelines', 'Embeddings', 'LLM Routing'],
-    why:   'LangChain for agent orchestration and memory management. RAG pipelines to ground LLMs in private data. LLM routing for cost-aware model selection — not every query needs GPT-4.',
-  },
-  {
-    name:  'DATA LAYER',
-    color: '#4ADE80',
-    pills: ['PostgreSQL', 'Redis', 'Supabase', 'Prisma', 'Vector DBs', 'SQL'],
-    why:   'PostgreSQL for relational integrity on complex schemas. Redis for sub-millisecond caching and pub/sub. Prisma for type-safe ORM that eliminates entire categories of runtime errors.',
-  },
-  {
-    name:  'MOTION & EXPERIENCE',
-    color: '#FB923C',
-    pills: ['Framer Motion', 'GSAP', 'Lenis', 'Canvas API', 'Three.js', 'CSS Animations'],
-    why:   'GSAP for timeline-precise cinematic sequences. Lenis for scroll physics that feel intentional. Canvas API for generative visuals that can\'t be replicated with DOM elements.',
-  },
-  {
-    name:  'DEVOPS & ARCHITECTURE',
-    color: '#60A5FA',
-    pills: ['Docker', 'Vercel', 'Git', 'System Design', 'API Architecture', 'CI/CD'],
-    why:   'Docker for reproducible environments that eliminate "works on my machine." System design as the first deliverable, not an afterthought. API contracts defined before any implementation begins.',
-  },
+  { name: 'FRONTEND SYSTEMS',       color: '#8B5CF6', pills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'GSAP'] },
+  { name: 'BACKEND INFRASTRUCTURE', color: '#06B6D4', pills: ['FastAPI', 'Django', 'Python', 'REST APIs', 'WebSockets', 'Node.js'] },
+  { name: 'AI SYSTEMS',             color: '#A78BFA', pills: ['LangChain', 'OpenAI API', 'Agents', 'RAG Pipelines', 'Embeddings', 'LLM Routing'] },
+  { name: 'DATA LAYER',             color: '#4ADE80', pills: ['PostgreSQL', 'Redis', 'Supabase', 'Prisma', 'Vector DBs', 'SQL'] },
+  { name: 'MOTION & EXPERIENCE',    color: '#FB923C', pills: ['Framer Motion', 'GSAP', 'Lenis', 'Canvas API', 'Three.js', 'CSS Animations'] },
+  { name: 'DEVOPS & ARCHITECTURE',  color: '#60A5FA', pills: ['Docker', 'Vercel', 'Git', 'System Design', 'API Architecture', 'CI/CD'] },
 ];
 
 // Marquee rows — duplicate items for seamless loop
@@ -72,16 +42,15 @@ export default function Skills() {
           style={{ marginBottom: 56, display: 'flex', flexDirection: 'column', gap: 14 }}>
           <span style={{ fontSize: '0.65rem', fontFamily: 'var(--font-space-grotesk)', fontWeight: 700,
             color: '#a78bfa', letterSpacing: '0.25em', textTransform: 'uppercase' }}>
-            ENGINEERING EXPERTISE
+            TECHNOLOGY STACK
           </span>
           <h2 style={{ fontSize: 'clamp(2.2rem,4vw,3.5rem)', fontFamily: 'var(--font-space-grotesk)',
             fontWeight: 900, letterSpacing: '-0.04em', color: '#ffffff', lineHeight: 1.05, margin: 0 }}>
-            The engineering<br />ecosystem.
+            The systems I build with.
           </h2>
           <p style={{ color: 'rgba(228,228,231,0.4)', fontSize: '0.9rem', fontFamily: 'var(--font-space-grotesk)',
             margin: 0, maxWidth: 460, lineHeight: 1.7 }}>
-            Not buzzwords. The actual infrastructure behind every product — and the
-            reasoning behind why each technology was chosen.
+            Not buzzwords. The actual infrastructure behind every product.
           </p>
         </motion.div>
       </div>
@@ -193,15 +162,6 @@ function ClusterCard({ cluster, index }: { cluster: Cluster; index: number }) {
           </span>
         ))}
       </div>
-
-      {/* Why this stack */}
-      <p style={{
-        fontFamily: 'var(--font-space-grotesk)', fontSize: '0.72rem',
-        color: `${cluster.color}70`, lineHeight: 1.65, margin: 0,
-        fontStyle: 'italic', borderTop: `1px solid ${cluster.color}15`, paddingTop: 10,
-      }}>
-        {cluster.why}
-      </p>
     </motion.div>
   );
 }
